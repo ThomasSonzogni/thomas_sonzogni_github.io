@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compétences - Thomas Sonzogni</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <style>
+        .skills-section {
+            margin-top: 70px;
+            padding-top: 40px;
+        }
+
+        .skills-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .skills-intro h2 {
+            margin-bottom: 20px;
+        }
+
+        .skills-intro p {
+            font-size: 1.1rem;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .skill-category {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-orange) 0%, var(--primary-blue) 100%);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-orange);
+        }
+
+        .skill-category-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .skill-category-icon {
+            font-size: 2rem;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.08) 0%, rgba(0, 102, 204, 0.08) 100%);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .skill-item:hover {
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-blue) 100%);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-3px);
+        }
+
+        /* Proficiency Section */
+        .proficiency-section {
+            background: linear-gradient(135deg, #f5f5f5 0%, white 100%);
+            padding: 60px;
+            border-radius: 16px;
+            margin-bottom: 60px;
+        }
+
+        .proficiency-section h3 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .proficiency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .proficiency-item {
+            position: relative;
+        }
+
+        .proficiency-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .proficiency-name {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.05rem;
+        }
+
+        .proficiency-percentage {
+            font-weight: 700;
+            color: var(--primary-orange);
+        }
+
+        .proficiency-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .proficiency-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-orange) 0%, var(--primary-blue) 100%);
+            border-radius: 4px;
+            animation: fillBar 1.2s ease forwards;
+            width: 0;
+        }
+
+        @keyframes fillBar {
+            to {
+                width: var(--percentage, 80%);
+            }
+        }
+
+        /* Languages */
+        .languages-section {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 60px;
+        }
+
+        .languages-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .language-item {
+            background: #f5f5f5;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .language-item:hover {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(0, 102, 204, 0.1) 100%);
+        }
+
+        .language-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .language-level {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .language-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .language-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ddd;
+        }
+
+        .language-dot.filled {
+            background: var(--primary-orange);
+        }
+
+        /* Soft Skills */
+        .soft-skills-section {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 40px;
+        }
+
+        .soft-skills-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        .soft-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .soft-skill {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .soft-skill:hover {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.15) 0%, rgba(0, 102, 204, 0.15) 100%);
+            transform: translateX(5px);
+        }
+
+        .soft-skill-icon {
+            font-size: 1.5rem;
+            min-width: 30px;
+        }
+
+        .soft-skill-text {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        @media (max-width: 768px) {
+            .proficiency-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .language-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .proficiency-section {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">TS</a>
+            <ul class="navbar-menu">
+                <li><a href="index.html" class="navbar-link">Accueil</a></li>
+                <li><a href="about.html" class="navbar-link">À propos</a></li>
+                <li><a href="experience.html" class="navbar-link">Expérience</a></li>
+                <li><a href="education.html" class="navbar-link">Formation</a></li>
+                <li><a href="skills.html" class="navbar-link">Compétences</a></li>
+                <li><a href="projects.html" class="navbar-link">Projets</a></li>
+                <li><a href="contact.html" class="navbar-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Skills Section -->
+    <section class="skills-section">
+        <div class="container">
+            <div class="skills-intro">
+                <h2>Compétences</h2>
+                <p>Une expertise solide en data analytics, combinée à des outils modernes et une approche orientée métier.</p>
+            </div>
+
+            <!-- Skills Categories -->
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-category-title">
+                        <span class="skill-category-icon">⚙️</span>
+                        Stacks Techniques
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">SQL</div>
+                        <div class="skill-item">Python</div>
+                        <div class="skill-item">Power BI</div>
+                        <div class="skill-item">Excel</div>
+                        <div class="skill-item">Power Query</div>
+                        <div class="skill-item">GCP - BigQuery</div>
+                        <div class="skill-item">Power Automate</div>
+                        <div class="skill-item">Power Apps</div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-title">
+                        <span class="skill-category-icon">💼</span>
+                        Posture Professionnelle
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">Adaptabilité & Agilité</div>
+                        <div class="skill-item">Autonomie</div>
+                        <div class="skill-item">Force de Proposition</div>
+                        <div class="skill-item">Esprit d'Initiative</div>
+                        <div class="skill-item">Travail en Transverse</div>
+                        <div class="skill-item">Gestion des Priorités</div>
+                        <div class="skill-item">Communication</div>
+                        <div class="skill-item">Écoute Active</div>
+                        <div class="skill-item">Posture Positive</div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-title">
+                        <span class="skill-category-icon">📊</span>
+                        Domaines d'Expertise
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">Gestion de Projets Data</div>
+                        <div class="skill-item">Tableaux de Bord</div>
+                        <div class="skill-item">Automatisation</div>
+                        <div class="skill-item">Applications Métier</div>
+                        <div class="skill-item">Écosystème Data</div>
+                        <div class="skill-item">Pilotage End-to-End</div>
+                        <div class="skill-item">Formation d'équipes</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proficiency Levels -->
+            <div class="proficiency-section">
+                <h3>Maîtrise des Outils</h3>
+                <div class="proficiency-grid">
+                    <div class="proficiency-item">
+                        <div class="proficiency-label">
+                            <span class="proficiency-name">Power BI</span>
+                            <span class="proficiency-percentage">90%</span>
+                        </div>
+                        <div class="proficiency-bar">
+                            <div class="proficiency-fill" style="--percentage: 90%"></div>
+                        </div>
+                    </div>
+
+                    <div class="proficiency-item">
+                        <div class="proficiency-label">
+                            <span class="proficiency-name">Power Apps</span>
+                            <span class="proficiency-percentage">85%</span>
+                        </div>
+                        <div class="proficiency-bar">
+                            <div class="proficiency-fill" style="--percentage: 85%"></div>
+                        </div>
+                    </div>
+
+                    <div class="proficiency-item">
+                        <div class="proficiency-label">
+                            <span class="proficiency-name">SQL</span>
+                            <span class="proficiency-percentage">85%</span>
+                        </div>
+                        <div class="proficiency-bar">
+                            <div class="proficiency-fill" style="--percentage: 85%"></div>
+                        </div>
+                    </div>
+
+                    <div class="proficiency-item">
+                        <div class="proficiency-label">
+                            <span class="proficiency-name">Python</span>
+                            <span class="proficiency-percentage">80%</span>
+                        </div>
+                        <div class="proficiency-bar">
+                            <div class="proficiency-fill" style="--percentage: 80%"></div>
+                        </div>
+                    </div>
+
+                    <div class="proficiency-item">
+                        <div class="proficiency-label">
+                            <span class="proficiency-name">Excel</span>
+                            <span class="proficiency-percentage">95%</span>
+                        </div>
+                        <div class="proficiency-bar">
+                            <div class="proficiency-fill" style="--percentage: 95%"></div>
+                        </div>
+                    </div>
+
+                    <div class="proficiency-item">
+                        <div class="proficiency-label">
+                            <span class="proficiency-name">GCP - BigQuery</span>
+                            <span class="proficiency-percentage">75%</span>
+                        </div>
+                        <div class="proficiency-bar">
+                            <div class="proficiency-fill" style="--percentage: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Languages -->
+            <div class="languages-section">
+                <h3>Langues</h3>
+                <div class="language-grid">
+                    <div class="language-item">
+                        <div class="language-name">🇫🇷 Français</div>
+                        <div class="language-level">Natif</div>
+                        <div class="language-dots">
+                            <div class="language-dot filled"></div>
+                            <div class="language-dot filled"></div>
+                            <div class="language-dot filled"></div>
+                            <div class="language-dot filled"></div>
+                            <div class="language-dot filled"></div>
+                        </div>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-name">🇬🇧 Anglais</div>
+                        <div class="language-level">TOEIC 880 (2024)</div>
+                        <div class="language-dots">
+                            <div class="language-dot filled"></div>
+                            <div class="language-dot filled"></div>
+                            <div class="language-dot filled"></div>
+                            <div class="language-dot filled"></div>
+                            <div class="language-dot"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soft Skills -->
+            <div class="soft-skills-section">
+                <h3>Savoir-Être</h3>
+                <div class="soft-skills-grid">
+                    <div class="soft-skill">
+                        <span class="soft-skill-icon">✓</span>
+                        <span class="soft-skill-text">Adaptabilité</span>
+                    </div>
+                    <div class="soft-skill">
+                        <span class="soft-skill-icon">✓</span>
+                        <span class="soft-skill-text">Autonomie</span>
+                    </div>
+                    <div class="soft-skill">
+                        <span class="soft-skill-icon">✓</span>
+                        <span class="soft-skill-text">Rigueur</span>
+                    </div>
+                    <div class="soft-skill">
+                        <span class="soft-skill-icon">✓</span>
+                        <span class="soft-skill-text">Communication</span>
+                    </div>
+                    <div class="soft-skill">
+                        <span class="soft-skill-icon">✓</span>
+                        <span class="soft-skill-text">Leadership</span>
+                    </div>
+                    <div class="soft-skill">
+                        <span class="soft-skill-icon">✓</span>
+                        <span class="soft-skill-text">Créativité</span>
+                    </div>
+                    <div class="soft-skill">
+                        <span class="soft-skill-icon">✓</span>
+                        <span class="soft-skill-text">Gestion du Stress</span>
+                    </div>
+                    <div class="soft-skill">
+                        <span class="soft-skill-icon">✓</span>
+                        <span class="soft-skill-text">Esprit d'Équipe</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #f5f5f5; padding: 40px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 80px;">
+        <div class="container">
+            <p style="color: var(--text-light); margin-bottom: 10px;">&copy; 2024 Thomas Sonzogni. Tous droits réservés.</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Fait avec ❤️ et beaucoup de data ✨</p>
+        </div>
+    </footer>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>

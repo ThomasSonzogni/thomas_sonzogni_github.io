@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expérience - Thomas Sonzogni</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <style>
+        .experience-section {
+            margin-top: 70px;
+            padding-top: 40px;
+        }
+
+        .experience-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .experience-intro h2 {
+            margin-bottom: 20px;
+        }
+
+        .experience-intro p {
+            font-size: 1.1rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-orange) 0%, var(--primary-blue) 100%);
+        }
+
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: 50%;
+            padding-right: 40px;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 50%;
+            margin-right: 0;
+            padding-left: 40px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid var(--primary-orange);
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            border-color: var(--primary-blue);
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .timeline-item:hover .timeline-content {
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            gap: 20px;
+        }
+
+        .timeline-header-left {
+            flex: 1;
+        }
+
+        .timeline-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .timeline-company {
+            color: var(--primary-orange);
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-company span {
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        .timeline-period {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .timeline-description {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .timeline-points {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .timeline-points li {
+            color: var(--text-light);
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .timeline-points li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--primary-orange);
+            font-size: 0.8rem;
+        }
+
+        .timeline-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .timeline-skill {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(0, 102, 204, 0.1) 100%);
+            color: var(--text-dark);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 40px;
+                margin-right: 0;
+                padding-left: 0;
+                padding-right: 20px;
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: 0;
+            }
+
+            .timeline-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">TS</a>
+            <ul class="navbar-menu">
+                <li><a href="index.html" class="navbar-link">Accueil</a></li>
+                <li><a href="about.html" class="navbar-link">À propos</a></li>
+                <li><a href="experience.html" class="navbar-link">Expérience</a></li>
+                <li><a href="education.html" class="navbar-link">Formation</a></li>
+                <li><a href="skills.html" class="navbar-link">Compétences</a></li>
+                <li><a href="projects.html" class="navbar-link">Projets</a></li>
+                <li><a href="contact.html" class="navbar-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Experience Section -->
+    <section class="experience-section">
+        <div class="container">
+            <div class="experience-intro">
+                <h2>Parcours Professionnel</h2>
+                <p>Un parcours riche en défis, marqué par l'autonomie, l'adaptabilité et la passion pour transformer les données en solutions concrètes.</p>
+            </div>
+
+            <div class="timeline">
+                <!-- Experience 1: Orange -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-header-left">
+                                <div class="timeline-title">Data Analyst</div>
+                                <div class="timeline-company">Orange France <span>• Montpellier</span></div>
+                            </div>
+                        </div>
+                        <div class="timeline-period">Septembre 2024 - Septembre 2026</div>
+                        
+                        <div class="timeline-description">
+                            <strong>Service Facturation & Dommages – UCI Occitanie</strong>
+                        </div>
+
+                        <ul class="timeline-points">
+                            <li>Conception et déploiement d'une application métier (Power Apps) structurant une méthodologie complète d'enquête sur les dommages réseau</li>
+                            <li>Pilotage en autonomie de projets data end-to-end : recueil des besoins, priorisation, développement et mise en production</li>
+                            <li>Mise en place d'un écosystème data intégré (SAP, GCP/BigQuery, SharePoint, Excel) pour le suivi des KPI facturation & dommages</li>
+                            <li>Automatisation et fiabilisation des flux (Python, Power Automate) et accompagnement des équipes dans l'adoption</li>
+                            <li>Formation et accompagnement des équipes (IA générative interne), documentation et support</li>
+                        </ul>
+
+                        <div class="timeline-skills">
+                            <span class="timeline-skill">Power BI</span>
+                            <span class="timeline-skill">Power Apps</span>
+                            <span class="timeline-skill">Python</span>
+                            <span class="timeline-skill">SQL</span>
+                            <span class="timeline-skill">Power Automate</span>
+                            <span class="timeline-skill">GCP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 2: Sapeur-Pompier -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-header-left">
+                                <div class="timeline-title">Sapeur-Pompier</div>
+                                <div class="timeline-company">SDIS 91 <span>• Essonne</span></div>
+                            </div>
+                        </div>
+                        <div class="timeline-period">2020 - 2024</div>
+
+                        <ul class="timeline-points">
+                            <li>Engagement opérationnel sur interventions à fort enjeu humain, nécessitant réactivité et prise de décision rapide</li>
+                            <li>Priorisation des actions et coordination avec différents intervenants en contexte d'urgence</li>
+                            <li>Adaptation à des environnements opérationnels variés et changeants</li>
+                        </ul>
+
+                        <div class="timeline-skills">
+                            <span class="timeline-skill">Leadership</span>
+                            <span class="timeline-skill">Gestion de crise</span>
+                            <span class="timeline-skill">Adaptabilité</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 3: International -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-header-left">
+                                <div class="timeline-title">Expérience Professionnelle Internationale</div>
+                                <div class="timeline-company">Diverses entreprises <span>• Australie</span></div>
+                            </div>
+                        </div>
+                        <div class="timeline-period">2023</div>
+
+                        <div class="timeline-description">
+                            Rockford Wines, Avorama, Sheraton Hotels
+                        </div>
+
+                        <ul class="timeline-points">
+                            <li>Adaptation rapide à des environnements professionnels variés en contexte anglophone (agriculture, industrie, hôtellerie)</li>
+                            <li>Autonomie et polyvalence dans des contextes exigeants</li>
+                            <li>Travail quotidien en anglais et immersion professionnelle</li>
+                        </ul>
+
+                        <div class="timeline-skills">
+                            <span class="timeline-skill">Anglais</span>
+                            <span class="timeline-skill">Adaptabilité</span>
+                            <span class="timeline-skill">Polyvalence</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 4: BNP Paribas -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-header-left">
+                                <div class="timeline-title">Auxiliaire de Vacances</div>
+                                <div class="timeline-company">BNP Paribas <span>• Paris</span></div>
+                            </div>
+                        </div>
+                        <div class="timeline-period">Été 2018, 2019, 2020</div>
+
+                        <div class="timeline-description">
+                            Missions variées incluant support administratif et opérationnel.
+                        </div>
+
+                        <div class="timeline-skills">
+                            <span class="timeline-skill">Administration</span>
+                            <span class="timeline-skill">Organisation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 5: Livraison -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-header-left">
+                                <div class="timeline-title">Agent de Livraison - Colis Alimentaire</div>
+                                <div class="timeline-company">Société Saint-Vincent-de-Paul <span>• Paris</span></div>
+                            </div>
+                        </div>
+                        <div class="timeline-period">2020 (COVID-19)</div>
+
+                        <div class="timeline-description">
+                            Mission ponctuelle d'aide alimentaire pendant la crise sanitaire.
+                        </div>
+
+                        <div class="timeline-skills">
+                            <span class="timeline-skill">Engagement social</span>
+                            <span class="timeline-skill">Solidarité</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #f5f5f5; padding: 40px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 80px;">
+        <div class="container">
+            <p style="color: var(--text-light); margin-bottom: 10px;">&copy; 2024 Thomas Sonzogni. Tous droits réservés.</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Fait avec ❤️ et beaucoup de data ✨</p>
+        </div>
+    </footer>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projets - Thomas Sonzogni</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <style>
+        .projects-section { margin-top: 70px; padding-top: 40px; }
+        .projects-intro { text-align: center; max-width: 700px; margin: 0 auto 60px; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        
+        .project-card {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.15) 0%, rgba(0, 102, 204, 0.15) 100%);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-orange);
+        }
+        
+        .project-content {
+            padding: 30px;
+        }
+        
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+        
+        .project-description {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .project-tag {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(0, 102, 204, 0.1) 100%);
+            color: var(--primary-orange);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 30px;
+            background: linear-gradient(135deg, #f5f5f5 0%, white 100%);
+            border-radius: 12px;
+            border: 2px dashed var(--border);
+        }
+        
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        
+        .empty-state h3 {
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+        
+        .empty-state p {
+            color: var(--text-light);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .projects-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">TS</a>
+            <ul class="navbar-menu">
+                <li><a href="index.html" class="navbar-link">Accueil</a></li>
+                <li><a href="about.html" class="navbar-link">À propos</a></li>
+                <li><a href="experience.html" class="navbar-link">Expérience</a></li>
+                <li><a href="education.html" class="navbar-link">Formation</a></li>
+                <li><a href="skills.html" class="navbar-link">Compétences</a></li>
+                <li><a href="projects.html" class="navbar-link">Projets</a></li>
+                <li><a href="contact.html" class="navbar-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="projects-section">
+        <div class="container">
+            <div class="projects-intro">
+                <h2>Mes Projets</h2>
+                <p>Retrouvez ci-dessous les projets sur lesquels j'ai pu travailler et les solutions que j'ai développées.</p>
+            </div>
+
+            <div class="empty-state">
+                <div class="empty-state-icon">🚀</div>
+                <h3>Projets en cours de documentation</h3>
+                <p>Je suis en train de détailler mes réalisations les plus impactantes. Revenez bientôt pour découvrir mes case studies complets avec résultats, technologies et apprentissages clés !</p>
+            </div>
+
+            <!-- Placeholder for future projects -->
+            <div class="projects-grid" style="margin-top: 60px;">
+                <!-- Project cards will be added here -->
+                <!-- Example template:
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Nom du Projet</h3>
+                        <p class="project-description">Description du projet et de son impact...</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Power BI</span>
+                            <span class="project-tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+                -->
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: #f5f5f5; padding: 40px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 80px;">
+        <div class="container">
+            <p style="color: var(--text-light); margin-bottom: 10px;">&copy; 2024 Thomas Sonzogni. Tous droits réservés.</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Fait avec ❤️ et beaucoup de data ✨</p>
+        </div>
+    </footer>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>
