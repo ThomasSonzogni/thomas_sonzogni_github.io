@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thomas Sonzogni - Data Analyst</title>
+    <meta name="description" content="Thomas Sonzogni - Data Analyst spécialisé en gestion de projets data, Power BI, Python et automatisation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1f2937;
+            --secondary: #374151;
+            --accent: #2563eb;
+            --text-dark: #111827;
+            --text-light: #6b7280;
+            --text-muted: #9ca3af;
+            --bg-light: #f3f4f6;
+            --border: #e5e7eb;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 12px 0;
+        }
+
+        header.scrolled {
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .logo {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        .hero {
+            padding: 120px 0 60px;
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .hero-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 24px;
+        }
+
+        .hero-description {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 28px;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 32px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 1.5px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(37, 99, 235, 0.08);
+        }
+
+        .hero-photo {
+            width: 100%;
+            max-width: 260px;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+        }
+
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        section {
+            padding: 70px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+            padding-bottom: 60px;
+        }
+
+        section h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 40px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .about-text {
+            font-size: 14px;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        .about-text p {
+            margin-bottom: 16px;
+        }
+
+        .about-text strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .values-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .value-item {
+            padding: 16px;
+            background: var(--bg-light);
+            border-left: 3px solid var(--accent);
+            border-radius: 4px;
+        }
+
+        .value-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        .value-text {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .experiences {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .exp-item {
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .exp-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 12px;
+        }
+
+        .exp-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .exp-company {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 2px;
+        }
+
+        .exp-period {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .exp-content {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .exp-content strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .exp-list {
+            list-style: none;
+            margin: 12px 0;
+        }
+
+        .exp-list li {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.7;
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+
+        .exp-list li::before {
+            content: '▪';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .exp-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 12px;
+        }
+
+        .skill-badge {
+            background: var(--bg-light);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+        }
+
+        .education-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+        }
+
+        .edu-item {
+            background: var(--bg-light);
+            padding: 28px;
+            border-radius: 6px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .edu-degree {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .edu-school {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+
+        .edu-period {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .skills-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .skill-category {
+            background: var(--bg-light);
+            padding: 24px;
+            border-radius: 6px;
+            border-top: 3px solid var(--accent);
+        }
+
+        .skill-category-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill-tag {
+            background: white;
+            border: 1px solid var(--border);
+            color: var(--text-dark);
+            padding: 6px 12px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(37, 99, 235, 0.03);
+        }
+
+        .featured-project {
+            background: linear-gradient(135deg, var(--bg-light) 0%, white 100%);
+            padding: 32px;
+            border-radius: 6px;
+            border-left: 4px solid var(--accent);
+            margin-bottom: 32px;
+        }
+
+        .project-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .project-subtitle {
+            font-size: 13px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .project-text {
+            font-size: 13px;
+            line-height: 1.7;
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+
+        .project-list {
+            list-style: none;
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .project-list li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+
+        .project-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .impact-box {
+            background: rgba(37, 99, 235, 0.08);
+            border-left: 3px solid var(--accent);
+            padding: 12px;
+            border-radius: 4px;
+            margin-top: 12px;
+            font-size: 13px;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .contact-section {
+            text-align: center;
+            padding: 70px 0 60px;
+        }
+
+        .contact-section h2 {
+            border: none;
+            padding: 0;
+            display: block;
+            margin-bottom: 24px;
+        }
+
+        .contact-text {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 36px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            padding: 12px 28px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            border-radius: 5px;
+            border: 1.5px solid var(--accent);
+            color: var(--accent);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-btn:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 32px 0;
+            text-align: center;
+            font-size: 12px;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                padding: 100px 0 40px;
+            }
+
+            .hero-text h1 {
+                font-size: 32px;
+            }
+
+            .hero-photo {
+                max-width: 200px;
+                margin: 0 auto;
+            }
+
+            nav {
+                gap: 16px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .exp-header {
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            section h2 {
+                font-size: 22px;
+                margin-bottom: 28px;
+            }
+
+            .education-items,
+            .skills-section {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+            }
+
+            .contact-btn {
+                width: 100%;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 26px;
+            }
+
+            .header-inner {
+                height: 50px;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 11px;
+            }
+
+            section {
+                padding: 50px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="logo">TS</a>
+                <nav>
+                    <a href="#apropos">À propos</a>
+                    <a href="#experience">Expérience</a>
+                    <a href="#formation">Formation</a>
+                    <a href="#competences">Compétences</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <div class="container">
+        <section class="hero" id="hero">
+            <div class="hero-text">
+                <h1>Thomas Sonzogni</h1>
+                <div class="hero-title">Data Analyst • Gestion de Projets Data</div>
+                <p class="hero-description">
+                    Data Analyst en fin d'apprentissage chez Orange. Je transforme des besoins opérationnels en solutions analytiques concrètes et durables, en pilotant les projets de bout en bout.
+                </p>
+                <div class="hero-meta">
+                    <div>📍 Toulouse, France — Mobilité Europe</div>
+                    <div>🎯 Disponible septembre 2026</div>
+                    <div>06 32 45 13 63</div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="mailto:thomas.paul.sonzogni@gmail.com" class="btn btn-primary">Me contacter</a>
+                    <a href="https://linkedin.com/in/thomas-sonzogni" target="_blank" class="btn btn-secondary">LinkedIn</a>
+                </div>
+            </div>
+            <div class="hero-photo">
+                <img src="photo.png" alt="Thomas Sonzogni">
+            </div>
+        </section>
+
+        <!-- À Propos -->
+        <section id="apropos">
+            <h2>À propos</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>En apprentissage chez <strong>Orange</strong>, j'ai mené des projets data de bout en bout au sein du service <strong>Facturation & Dommages</strong>, en transformant des besoins opérationnels en solutions analytiques concrètes et durables.</p>
+                    <p>Je suis passionné par l'<strong>identification de la solution la plus adaptée et efficace</strong> face aux problématiques métier. J'aime piloter les projets en autonomie : de l'analyse des besoins à la mise en production, en passant par le développement et l'accompagnement des utilisateurs.</p>
+                    <p>Je souhaite rejoindre une équipe data à forte exposition métier pour continuer à mener des projets variés et à fort impact.</p>
+                </div>
+                <div>
+                    <div class="values-list">
+                        <div class="value-item">
+                            <div class="value-title">🎯 Autonomie</div>
+                            <div class="value-text">Je prends en charge les projets de bout en bout avec responsabilité.</div>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-title">🔄 Adaptabilité</div>
+                            <div class="value-text">Je m'adapte rapidement aux défis nouveaux et aux environnements changeants.</div>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-title">💡 Force de proposition</div>
+                            <div class="value-text">J'aime proposer des solutions innovantes face aux problématiques.</div>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-title">🤝 Collaboration</div>
+                            <div class="value-text">Je travaille efficacement en transverse et accompagne les équipes.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expérience -->
+        <section id="experience">
+            <h2>Expérience Professionnelle</h2>
+            <div class="experiences">
+                <!-- Orange -->
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">Data Analyst</div>
+                            <div class="exp-company">Orange France • Montpellier</div>
+                        </div>
+                        <div class="exp-period">09/2024 – Présent</div>
+                    </div>
+                    <div class="exp-content"><strong>Service Facturation & Dommages</strong></div>
+                    <div class="exp-content">Pilotage de projets data end-to-end : analyse des besoins métier, conception, développement, mise en production et accompagnement des utilisateurs.</div>
+                    <ul class="exp-list">
+                        <li><strong>Application OPAGE</strong> (Power Apps + SharePoint + Power BI) : structuration des enquêtes de dommages réseau. Impact : +5% de tiers identifiés, +9% vs moyenne nationale, UCI Occitanie 1ère nationale</li>
+                        <li><strong>Tableaux de bord Power BI</strong> : pilotage KPI facturation & dommages avec alertes automatisées</li>
+                        <li><strong>Automatisation</strong> : Power Apps, Power Automate, macros VBA (réduction : 1-2 jours → 20 min)</li>
+                        <li><strong>Formation</strong> : 50+ utilisateurs à l'IA générative interne</li>
+                    </ul>
+                    <div class="exp-skills">
+                        <span class="skill-badge">Power Platform</span>
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">SQL</span>
+                        <span class="skill-badge">Power BI</span>
+                        <span class="skill-badge">Power Apps</span>
+                        <span class="skill-badge">GCP/BigQuery</span>
+                        <span class="skill-badge">VBA</span>
+                    </div>
+                </div>
+
+                <!-- Sapeur-Pompier -->
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">Sapeur-Pompier</div>
+                            <div class="exp-company">SDIS 91 • Essonne</div>
+                        </div>
+                        <div class="exp-period">02/2020 – 12/2024</div>
+                    </div>
+                    <div class="exp-content">Engagement opérationnel sur interventions à fort enjeu humain, nécessitant réactivité, prise de décision rapide et gestion du stress en environnement critique.</div>
+                    <ul class="exp-list">
+                        <li>Priorisation des actions et coordination en contexte d'urgence</li>
+                        <li>Adaptation à des situations complexes et changeantes</li>
+                        <li>Animation de sessions de découverte auprès de collégiens</li>
+                    </ul>
+                    <div class="exp-skills">
+                        <span class="skill-badge">Gestion du stress</span>
+                        <span class="skill-badge">Travail d'équipe</span>
+                        <span class="skill-badge">Leadership</span>
+                    </div>
+                </div>
+
+                <!-- Australie -->
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">Expérience Professionnelle Internationale</div>
+                            <div class="exp-company">Rockford Wines, Avorama, Sheraton Hotels • Australie</div>
+                        </div>
+                        <div class="exp-period">02/2023 – 02/2024</div>
+                    </div>
+                    <div class="exp-content">Adaptation à des environnements professionnels variés (agriculture, viticulture, hôtellerie) en contexte anglophone. Autonomie et polyvalence dans des contextes exigeants.</div>
+                    <div class="exp-skills">
+                        <span class="skill-badge">Anglais professionnel</span>
+                        <span class="skill-badge">Adaptabilité</span>
+                        <span class="skill-badge">Polyvalence</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formation -->
+        <section id="formation">
+            <h2>Formation</h2>
+            <div class="education-items">
+                <div class="edu-item">
+                    <div class="edu-degree">Data Analyst</div>
+                    <div class="edu-school">CFA Orange (OpenClassroom)</div>
+                    <div class="edu-period">Titre RNCP Niveau 6 • 09/2024 - Présent</div>
+                </div>
+                <div class="edu-item">
+                    <div class="edu-degree">Licence Économie et Gestion</div>
+                    <div class="edu-school">Université d'Évry</div>
+                    <div class="edu-period">2018 - 2021</div>
+                </div>
+            </div>
+
+            <!-- Projet Principal -->
+            <div class="featured-project" style="margin-top: 40px;">
+                <div class="project-subtitle">📊 Projet Principal</div>
+                <div class="project-title">OPAGE - Outil de Pilotage des dommAGEs</div>
+                <div class="project-text">Transformation digitale des enquêtes de dommages réseau : conception et développement d'une application Power Apps complète pour structurer les enquêtes et maximiser l'identification des tiers responsables.</div>
+                <ul class="project-list">
+                    <li>Gestion de projet end-to-end : analyse des besoins, architecture, développement, déploiement, maintenance</li>
+                    <li>Création de tableaux de bord Power BI pour le pilotage de la performance</li>
+                    <li>Accompagnement de 10+ utilisateurs et améliorations continues</li>
+                    <li>Impact mesurable : +5% de tiers identifiés, +9% vs moyenne nationale</li>
+                </ul>
+                <div class="impact-box">
+                    <strong>Résultat :</strong> UCI Occitanie classée 1ère au niveau national (130% de l'objectif annuel). Solution en cours de déploiement à l'échelle nationale.
+                </div>
+            </div>
+        </section>
+
+        <!-- Compétences -->
+        <section id="competences">
+            <h2>Compétences</h2>
+            <div class="skills-section">
+                <div class="skill-category">
+                    <div class="skill-category-title">🔧 Techniques</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Power Apps</span>
+                        <span class="skill-tag">Power Automate</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Excel (avancé)</span>
+                        <span class="skill-tag">GCP/BigQuery</span>
+                        <span class="skill-tag">SharePoint</span>
+                        <span class="skill-tag">VBA</span>
+                        <span class="skill-tag">Power Query</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-title">📊 Méthodologies</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">Gestion de projet</span>
+                        <span class="skill-tag">Pilotage end-to-end</span>
+                        <span class="skill-tag">Analyse des besoins</span>
+                        <span class="skill-tag">Business Intelligence</span>
+                        <span class="skill-tag">Data Visualization</span>
+                        <span class="skill-tag">Automatisation</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-title">🤝 Soft Skills</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">Autonomie</span>
+                        <span class="skill-tag">Adaptabilité</span>
+                        <span class="skill-tag">Communication</span>
+                        <span class="skill-tag">Travail d'équipe</span>
+                        <span class="skill-tag">Leadership</span>
+                        <span class="skill-tag">Gestion du stress</span>
+                        <span class="skill-tag">Force de proposition</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-title">🌍 Langues</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">Français (natif)</span>
+                        <span class="skill-tag">Anglais (courant)</span>
+                        <span class="skill-tag">TOEIC 880</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="contact-section">
+            <h2>Contact</h2>
+            <p class="contact-text">
+                Je suis à l'écoute d'opportunités intéressantes. N'hésitez pas à me contacter pour discuter de vos projets data.
+            </p>
+            <div class="contact-buttons">
+                <a href="mailto:thomas.paul.sonzogni@gmail.com" class="contact-btn">✉️ Email</a>
+                <a href="https://linkedin.com/in/thomas-sonzogni" target="_blank" class="contact-btn">💼 LinkedIn</a>
+                <a href="tel:+33632451363" class="contact-btn">📱 Téléphone</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Thomas Sonzogni. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        const navLinks = document.querySelectorAll('nav a');
+        const sections = document.querySelectorAll('section');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
