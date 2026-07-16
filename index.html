@@ -144,7 +144,7 @@ section { padding: 6rem 1.5rem; }
 }
 @media (min-width: 769px) {
   .hero-grid { grid-template-columns: 1fr 1fr; gap: 5rem; }
-  .hero { padding-top: 0; }
+  .hero { padding-top: 0; padding-bottom: 0; }
 }
 .hero-text { z-index: 2; }
 .hero-tag {
@@ -217,7 +217,8 @@ section { padding: 6rem 1.5rem; }
 }
 
 /* ─── ABOUT ─── */
-#about { background: var(--black); }
+#about { background: rgba(245,245,240,0.02); padding-top: 5rem; }
+@media (min-width: 769px) { #about { padding-top: 7rem; } }
 .about-text {
   max-width: 700px; font-size: 1rem; color: var(--gray-200);
   line-height: 1.85; font-weight: 300;
@@ -225,12 +226,12 @@ section { padding: 6rem 1.5rem; }
 .about-text p + p { margin-top: 1.5rem; }
 
 /* ─── COMPETENCES ─── */
-#competences { background: rgba(245,245,240,0.02); }
+#competences { background: var(--black); }
 .skills-grid {
   display: grid; grid-template-columns: 1fr; gap: 1rem;
 }
 @media (min-width: 600px) {
-  .skills-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
 }
 .skill-category {
   padding: 1.75rem; border: 1px solid rgba(245,245,240,0.06);
@@ -275,7 +276,7 @@ section { padding: 6rem 1.5rem; }
 }
 
 /* ─── PROJECT ─── */
-#projet { background: var(--black); }
+#projet { background: rgba(245,245,240,0.02); }
 .project-card {
   border: 1px solid rgba(245,245,240,0.08);
   padding: 2.5rem 2rem;
@@ -339,7 +340,7 @@ section { padding: 6rem 1.5rem; }
 .project-github a::after { content: ' \2192'; }
 
 /* ─── EXPERIENCE ─── */
-#experience { background: rgba(245,245,240,0.02); }
+#experience { background: var(--black); }
 .timeline { position: relative; padding-left: 1.75rem; }
 @media (min-width: 769px) { .timeline { padding-left: 2rem; } }
 .timeline::before {
@@ -390,7 +391,7 @@ section { padding: 6rem 1.5rem; }
 }
 
 /* ─── FORMATION ─── */
-#formation { background: var(--black); }
+#formation { background: rgba(245,245,240,0.02); }
 .formation-grid { display: grid; gap: 1.5rem; }
 @media (min-width: 769px) { .formation-grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
 .formation-card {
@@ -612,16 +613,20 @@ body::after {
 
     <div class="skills-grid reveal reveal-delay-3">
       <div class="skill-category">
-        <div class="skill-cat-title" data-i18n="skill-cat-1-title">Techniques</div>
-        <p data-i18n="skill-cat-1-p">Power BI, Python, SQL, Power Platform, VBA, GCP BigQuery, SAP — un socle solide et polyvalent, forgé au fil de mes projets chez Orange.</p>
+        <div class="skill-cat-title" data-i18n="skill-cat-1-title">Data & Visualisation</div>
+        <p data-i18n="skill-cat-1-p">Power BI, DAX, Python (Pandas, Matplotlib, SciPy), SQL, PostgreSQL — je maîtrise la chaîne complète de la donnée. Dashboards métier, rapports multi-sources, études statistiques : transformer les données brutes en insights lisibles et actionnables.</p>
       </div>
       <div class="skill-category">
-        <div class="skill-cat-title" data-i18n="skill-cat-2-title">Méthodologies</div>
-        <p data-i18n="skill-cat-2-p">Gestion de projet end-to-end, Data Pipelines, ETL, automatisation. Si une tâche est répétitive, je cherche toujours comment la rendre plus efficace.</p>
+        <div class="skill-cat-title" data-i18n="skill-cat-2-title">Automatisation & Low-Code</div>
+        <p data-i18n="skill-cat-2-p">Power Automate, Power Apps, Office Scripts (JS), VBA, KNIME — j'automatise les processus métier pour supprimer les tâches répétitives. Des journées entières économisées, des workflows fiabilisés, des outils métier adoptés par les équipes.</p>
       </div>
       <div class="skill-category">
-        <div class="skill-cat-title" data-i18n="skill-cat-3-title">Soft Skills</div>
-        <p data-i18n="skill-cat-3-p">Gestion du stress, prise de décision rapide, adaptabilité, autonomie, communication — des qualités forgées par un parcours atypique.</p>
+        <div class="skill-cat-title" data-i18n="skill-cat-3-title">Machine Learning & Stats</div>
+        <p data-i18n="skill-cat-3-p">Scikit-learn, ACP/PCA, K-means, classification supervisée, régressions — segmentation de marché internationale, détection de faux billets, analyse d'égalité H/F. De la modélisation à l'interprétation des résultats.</p>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title" data-i18n="skill-cat-4-title">Gestion de projet & Impact</div>
+        <p data-i18n="skill-cat-4-p">Piloter un projet de A à Z : recueil des besoins, architecture, déploiement, formation des utilisateurs. OPAGE, classé 1er nationalement et en cours de déploiement national, illustre ma capacité à transformer un besoin métier en solution à fort impact mesurable.</p>
       </div>
     </div>
 
@@ -629,25 +634,20 @@ body::after {
       <h3 data-i18n="skills-overview-h3">En un coup d'œil</h3>
       <div class="overview-grid">
         <div class="overview-col">
-          <h4>Data &amp; BI</h4>
+          <h4>Data & BI</h4>
           <ul><li>Power BI</li><li>Python</li><li>SQL</li><li>DAX</li></ul>
         </div>
         <div class="overview-col">
-          <h4>Dev &amp; Auto.</h4>
-          <ul><li>Power Apps</li><li>Power Automate</li><li>VBA</li><li>ETL / Pipeline</li></ul>
+          <h4>Automatisation</h4>
+          <ul><li>Power Automate</li><li>Power Apps</li><li>VBA</li><li>Office Scripts</li></ul>
         </div>
         <div class="overview-col">
-          <h4>Data &amp; Cloud</h4>
-          <ul><li>GCP BigQuery</li><li>SAP</li><li>SharePoint</li><li>GCP</li></ul>
+          <h4>Machine Learning</h4>
+          <ul><li>Scikit-learn</li><li>ACP / PCA</li><li>K-means</li><li>SciPy</li></ul>
         </div>
         <div class="overview-col">
-          <h4 data-i18n="col-methods-h4">Méthodologies</h4>
-          <ul>
-            <li data-i18n="method-li-1">Gestion de projet</li>
-            <li>Agile</li>
-            <li data-i18n="method-li-3">Automatisation</li>
-            <li>End-to-end</li>
-          </ul>
+          <h4>Cloud & Data</h4>
+          <ul><li>GCP BigQuery</li><li>PostgreSQL</li><li>SharePoint</li><li>KNIME</li></ul>
         </div>
         <div class="overview-col">
           <h4 data-i18n="col-softskills-h4">Soft Skills</h4>
@@ -1192,12 +1192,14 @@ const translations = {
     'about-p3': 'Ces expériences ont forgé ma façon d\'aborder les projets data : avec pragmatisme, curiosité et une vraie envie de faire des choses qui ont du sens. Ce qui me motive aujourd\'hui, c\'est de continuer à construire des solutions utiles, à monter en compétences et à relever de nouveaux défis.',
     'skills-label': '02 — Compétences',
     'skills-title': 'Savoir-faire',
-    'skill-cat-1-title': 'Techniques',
-    'skill-cat-1-p': 'Power BI, Python, SQL, Power Platform, VBA, GCP BigQuery, SAP — un socle solide et polyvalent, forgé au fil de mes projets chez Orange.',
-    'skill-cat-2-title': 'Méthodologies',
-    'skill-cat-2-p': 'Gestion de projet end-to-end, Data Pipelines, ETL, automatisation. Si une tâche est répétitive, je cherche toujours comment la rendre plus efficace.',
-    'skill-cat-3-title': 'Soft Skills',
-    'skill-cat-3-p': 'Gestion du stress, prise de décision rapide, adaptabilité, autonomie, communication — des qualités forgées par un parcours atypique.',
+    'skill-cat-1-title': 'Data & Visualisation',
+    'skill-cat-1-p': 'Power BI, DAX, Python (Pandas, Matplotlib, SciPy), SQL, PostgreSQL — je maîtrise la chaîne complète de la donnée. Dashboards métier, rapports multi-sources, études statistiques : transformer les données brutes en insights lisibles et actionnables.',
+    'skill-cat-2-title': 'Automatisation & Low-Code',
+    'skill-cat-2-p': 'Power Automate, Power Apps, Office Scripts (JS), VBA, KNIME — j\'automatise les processus métier pour supprimer les tâches répétitives. Des journées entières économisées, des workflows fiabilisés, des outils métier adoptés par les équipes.',
+    'skill-cat-3-title': 'Machine Learning & Stats',
+    'skill-cat-3-p': 'Scikit-learn, ACP/PCA, K-means, classification supervisée, régressions — segmentation de marché internationale, détection de faux billets, analyse d\'égalité H/F. De la modélisation à l\'interprétation des résultats.',
+    'skill-cat-4-title': 'Gestion de projet & Impact',
+    'skill-cat-4-p': 'Piloter un projet de A à Z : recueil des besoins, architecture, déploiement, formation des utilisateurs. OPAGE, classé 1er nationalement et en cours de déploiement national, illustre ma capacité à transformer un besoin métier en solution à fort impact mesurable.',
     'skills-overview-h3': 'En un coup d\'œil',
     'col-methods-h4': 'Méthodologies',
     'method-li-1': 'Gestion de projet',
@@ -1342,12 +1344,14 @@ const translations = {
     'about-p3': 'These experiences shaped the way I approach data projects: with pragmatism, curiosity, and a genuine desire to build things that matter. What drives me today is continuing to build useful solutions, growing my skills, and taking on new challenges.',
     'skills-label': '02 — Skills',
     'skills-title': 'Expertise',
-    'skill-cat-1-title': 'Technical',
-    'skill-cat-1-p': 'Power BI, Python, SQL, Power Platform, VBA, GCP BigQuery, SAP — a solid and versatile foundation, built through my projects at Orange.',
-    'skill-cat-2-title': 'Methodologies',
-    'skill-cat-2-p': 'End-to-end project management, Data Pipelines, ETL, automation. If a task is repetitive, I always look for ways to make it more efficient.',
-    'skill-cat-3-title': 'Soft Skills',
-    'skill-cat-3-p': 'Stress management, quick decision-making, adaptability, autonomy, communication — qualities forged by an unconventional career path.',
+    'skill-cat-1-title': 'Data & Visualisation',
+    'skill-cat-1-p': 'Power BI, DAX, Python (Pandas, Matplotlib, SciPy), SQL, PostgreSQL — I command the full data chain. Business dashboards, multi-source reports, statistical studies: turning raw data into clear, actionable insights.',
+    'skill-cat-2-title': 'Automation & Low-Code',
+    'skill-cat-2-p': 'Power Automate, Power Apps, Office Scripts (JS), VBA, KNIME — I automate business processes to eliminate repetitive tasks. Full days saved, workflows made reliable, tools adopted by entire teams.',
+    'skill-cat-3-title': 'Machine Learning & Stats',
+    'skill-cat-3-p': 'Scikit-learn, PCA, K-means, supervised classification, regressions — international market segmentation, counterfeit banknote detection, gender equality analysis. From modeling to interpreting results.',
+    'skill-cat-4-title': 'Project Management & Impact',
+    'skill-cat-4-p': 'Leading a project end-to-end: requirements gathering, architecture, deployment, user training. OPAGE, ranked 1st nationally and rolling out across France, shows my ability to turn a business need into a high-impact, measurable solution.',
     'skills-overview-h3': 'At a Glance',
     'col-methods-h4': 'Methods',
     'method-li-1': 'Project Mgmt',
