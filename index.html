@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thomas Sonzogni — Data Analyst</title>
+<title>Thomas Sonzogni — Data Analyst · Gestion de Projet</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -62,6 +62,30 @@ nav.hidden { transform: translateY(-100%); }
 }
 .nav-links a:hover { color: var(--white); }
 .nav-links a:hover::after { width: 100%; }
+
+/* ─── NAV ACTIONS ─── */
+.nav-actions { display: flex; align-items: center; gap: 0.75rem; }
+
+/* ─── LANGUAGE SWITCHER ─── */
+.lang-switcher { display: flex; gap: 0.4rem; align-items: center; }
+.lang-btn {
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 2px solid rgba(245,245,240,0.15);
+  background: rgba(245,245,240,0.04);
+  cursor: pointer; font-size: 1.05rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.3s, background 0.3s, transform 0.2s;
+  padding: 0; line-height: 1;
+}
+.lang-btn.active {
+  border-color: rgba(245,245,240,0.6);
+  background: rgba(245,245,240,0.1);
+  transform: scale(1.08);
+}
+.lang-btn:hover:not(.active) {
+  border-color: rgba(245,245,240,0.3);
+  transform: scale(1.05);
+}
 
 /* Mobile burger */
 .burger {
@@ -487,39 +511,45 @@ body::after {
 <nav id="navbar">
   <a href="#accueil" class="nav-logo">TS.</a>
   <ul class="nav-links">
-    <li><a href="#about">À propos</a></li>
-    <li><a href="#projet">Projet</a></li>
-    <li><a href="#experience">Expériences</a></li>
-    <li><a href="#formation">Formation</a></li>
-    <li><a href="#competences">Compétences</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about" data-i18n="nav-about">À propos</a></li>
+    <li><a href="#projet" data-i18n="nav-project">Projet</a></li>
+    <li><a href="#experience" data-i18n="nav-experience">Expériences</a></li>
+    <li><a href="#formation" data-i18n="nav-education">Formation</a></li>
+    <li><a href="#competences" data-i18n="nav-skills">Compétences</a></li>
+    <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
   </ul>
-  <button class="burger" id="burger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-actions">
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="fr" onclick="setLanguage('fr')" title="Français">🇫🇷</button>
+      <button class="lang-btn" data-lang="en" onclick="setLanguage('en')" title="English">🇬🇧</button>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="closeMenu()">À propos</a>
-  <a href="#projet" onclick="closeMenu()">Projet</a>
-  <a href="#experience" onclick="closeMenu()">Expériences</a>
-  <a href="#formation" onclick="closeMenu()">Formation</a>
-  <a href="#competences" onclick="closeMenu()">Compétences</a>
-  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="#about" data-i18n="nav-about" onclick="closeMenu()">À propos</a>
+  <a href="#projet" data-i18n="nav-project" onclick="closeMenu()">Projet</a>
+  <a href="#experience" data-i18n="nav-experience" onclick="closeMenu()">Expériences</a>
+  <a href="#formation" data-i18n="nav-education" onclick="closeMenu()">Formation</a>
+  <a href="#competences" data-i18n="nav-skills" onclick="closeMenu()">Compétences</a>
+  <a href="#contact" data-i18n="nav-contact" onclick="closeMenu()">Contact</a>
 </div>
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <section class="hero" id="accueil">
   <div class="container hero-grid">
     <div class="hero-text">
-      <div class="hero-tag reveal">Data Analyst · Projets Data · Power BI, Python, Power Platform</div>
+      <div class="hero-tag reveal" data-i18n="hero-tag">Data Analyst · Gestion de Projet · Power BI, Python, Power Platform</div>
       <h1 class="hero-name reveal reveal-delay-1">Thomas<br>Sonzogni</h1>
-      <p class="hero-subtitle reveal reveal-delay-2">Transformer la donnée en solutions concrètes,<br>utiles et qui font la différence.</p>
-      <div class="hero-avail reveal reveal-delay-3">Disponible à partir de septembre 2026</div>
+      <p class="hero-subtitle reveal reveal-delay-2" data-i18n-html="hero-subtitle">Transformer la donnée en solutions concrètes,<br>utiles et qui font la différence.</p>
+      <div class="hero-avail reveal reveal-delay-3" data-i18n="hero-avail">Disponible à partir de septembre 2026</div>
       <div class="hero-contact reveal reveal-delay-4">
         <a href="mailto:thomas.paul.sonzogni@gmail.com">thomas.paul.sonzogni@gmail.com</a><br>
-        06.32.45.13.63 · Mobile en France et à l'international
+        06.32.45.13.63 · <span data-i18n="hero-contact-mobile">Mobile en France et à l'international</span>
       </div>
     </div>
     <div class="hero-photo reveal reveal-delay-2">
@@ -531,13 +561,13 @@ body::after {
 <!-- ═══════════════════ ABOUT ═══════════════════ -->
 <section id="about">
   <div class="container">
-    <div class="section-label reveal">01 — À propos</div>
-    <h2 class="section-title reveal reveal-delay-1">Mon parcours</h2>
+    <div class="section-label reveal" data-i18n="about-label">01 — À propos</div>
+    <h2 class="section-title reveal reveal-delay-1" data-i18n="about-title">Mon parcours</h2>
     <div class="section-divider reveal reveal-delay-2"></div>
     <div class="about-text reveal reveal-delay-3">
-      <p>Passionné par la donnée et ce qu'on peut en faire pour simplifier la vie des gens, j'ai rejoint Orange en tant que Data Analyst il y a 2 ans. J'aime piloter des projets de bout en bout, de la collecte à la visualisation, créer des outils métier qui ont un vrai impact et traduire des besoins complexes en solutions simples et efficaces.</p>
-      <p>Avant ça, j'ai été pompier professionnel et j'ai vécu une année en Australie. Des expériences très différentes, mais qui m'ont appris l'essentiel : m'adapter rapidement, garder la tête froide dans des situations complexes, travailler en équipe et toujours mettre l'humain au centre de ce que je fais.</p>
-      <p>Ces expériences ont forgé ma façon d'aborder les projets data : avec pragmatisme, curiosité et une vraie envie de faire des choses qui ont du sens. Ce qui me motive aujourd'hui, c'est de continuer à construire des solutions utiles, à monter en compétences et à relever de nouveaux défis.</p>
+      <p data-i18n="about-p1">Passionné par la donnée et ce qu'on peut en faire pour simplifier la vie des gens, j'ai rejoint Orange en tant que Data Analyst il y a 2 ans. J'aime piloter des projets de bout en bout, de la collecte à la visualisation, créer des outils métier qui ont un vrai impact et traduire des besoins complexes en solutions simples et efficaces.</p>
+      <p data-i18n="about-p2">Avant ça, j'ai été pompier professionnel et j'ai vécu une année en Australie. Des expériences très différentes, mais qui m'ont appris l'essentiel : m'adapter rapidement, garder la tête froide dans des situations complexes, travailler en équipe et toujours mettre l'humain au centre de ce que je fais.</p>
+      <p data-i18n="about-p3">Ces expériences ont forgé ma façon d'aborder les projets data : avec pragmatisme, curiosité et une vraie envie de faire des choses qui ont du sens. Ce qui me motive aujourd'hui, c'est de continuer à construire des solutions utiles, à monter en compétences et à relever de nouveaux défis.</p>
     </div>
   </div>
 </section>
@@ -545,7 +575,7 @@ body::after {
 <!-- ═══════════════════ PROJET ═══════════════════ -->
 <section id="projet">
   <div class="container">
-    <div class="section-label reveal">02 — Projet phare</div>
+    <div class="section-label reveal" data-i18n="project-label">02 — Projet phare</div>
     <h2 class="section-title reveal reveal-delay-1">OPAGE</h2>
     <div class="section-divider reveal reveal-delay-2"></div>
 
@@ -561,44 +591,44 @@ body::after {
       </div>
 
       <div class="project-section">
-        <div class="project-section-title">Le contexte</div>
-        <p>Chaque année, des milliers de dommages sont causés sur le réseau Orange par des tiers : travaux de chantier, accidents de la route... Avant OPAGE, les enquêtes étaient gérées manuellement, sans outil structuré, ce qui rendait difficile l'identification des responsables et le suivi de la performance.</p>
+        <div class="project-section-title" data-i18n="project-context-title">Le contexte</div>
+        <p data-i18n="project-context-text">Chaque année, des milliers de dommages sont causés sur le réseau Orange par des tiers : travaux de chantier, accidents de la route... Avant OPAGE, les enquêtes étaient gérées manuellement, sans outil structuré, ce qui rendait difficile l'identification des responsables et le suivi de la performance.</p>
       </div>
 
       <div class="project-section">
-        <div class="project-section-title">La solution</div>
-        <p>J'ai conçu et développé OPAGE de A à Z : une application Power Apps complète, connectée à SharePoint et Power BI, pour digitaliser et structurer l'ensemble du processus d'enquête. De l'analyse des besoins métier à la mise en production, en passant par l'architecture de la solution, le déploiement et la maintenance, j'ai piloté le projet en totale autonomie, en accompagnant plus de 20 utilisateurs dans la prise en main de l'outil.</p>
+        <div class="project-section-title" data-i18n="project-solution-title">La solution</div>
+        <p data-i18n="project-solution-text">J'ai conçu et développé OPAGE de A à Z : une application Power Apps complète, connectée à SharePoint et Power BI, pour digitaliser et structurer l'ensemble du processus d'enquête. De l'analyse des besoins métier à la mise en production, en passant par l'architecture de la solution, le déploiement et la maintenance, j'ai piloté le projet en totale autonomie, en accompagnant plus de 20 utilisateurs dans la prise en main de l'outil.</p>
       </div>
 
       <div class="project-section">
-        <div class="project-section-title">Les résultats</div>
+        <div class="project-section-title" data-i18n="project-results-title">Les résultats</div>
         <div class="results-grid">
           <div class="result-item">
             <div class="result-number">+5%</div>
-            <div class="result-desc">de tiers identifiés comme responsables en 2025</div>
+            <div class="result-desc" data-i18n="result-1-desc">de tiers identifiés comme responsables en 2025</div>
           </div>
           <div class="result-item">
             <div class="result-number">+9%</div>
-            <div class="result-desc">au-dessus de la moyenne nationale sur le taux d'identification</div>
+            <div class="result-desc" data-i18n="result-2-desc">au-dessus de la moyenne nationale sur le taux d'identification</div>
           </div>
           <div class="result-item">
             <div class="result-number">1er</div>
-            <div class="result-desc">UCI Occitanie classée 1ère au niveau national</div>
+            <div class="result-desc" data-i18n="result-3-desc">UCI Occitanie classée 1ère au niveau national</div>
           </div>
           <div class="result-item">
             <div class="result-number">130%</div>
-            <div class="result-desc">de l'objectif annuel atteint — déploiement national en cours</div>
+            <div class="result-desc" data-i18n="result-4-desc">de l'objectif annuel atteint — déploiement national en cours</div>
           </div>
         </div>
       </div>
 
       <div class="project-section">
-        <div class="project-section-title">Ce que j'en retiens</div>
-        <p>Ce projet m'a permis de piloter une vraie transformation digitale, de comprendre les enjeux métier et de voir concrètement l'impact de la data sur le terrain. C'est exactement ce qui me motive : construire des solutions simples, utiles et qui font vraiment la différence.</p>
+        <div class="project-section-title" data-i18n="project-takeaway-title">Ce que j'en retiens</div>
+        <p data-i18n="project-takeaway-text">Ce projet m'a permis de piloter une vraie transformation digitale, de comprendre les enjeux métier et de voir concrètement l'impact de la data sur le terrain. C'est exactement ce qui me motive : construire des solutions simples, utiles et qui font vraiment la différence.</p>
       </div>
 
       <div class="project-github">
-        <a href="https://github.com/ThomasSonzogni" target="_blank" rel="noopener">Voir mes autres projets sur GitHub</a>
+        <a href="https://github.com/ThomasSonzogni" target="_blank" rel="noopener" data-i18n="project-github-link">Voir mes autres projets sur GitHub</a>
       </div>
     </div>
   </div>
@@ -607,19 +637,19 @@ body::after {
 <!-- ═══════════════════ EXPERIENCE ═══════════════════ -->
 <section id="experience">
   <div class="container">
-    <div class="section-label reveal">03 — Expériences</div>
-    <h2 class="section-title reveal reveal-delay-1">Parcours professionnel</h2>
+    <div class="section-label reveal" data-i18n="exp-label">03 — Expériences</div>
+    <h2 class="section-title reveal reveal-delay-1" data-i18n="exp-title">Parcours professionnel</h2>
     <div class="section-divider reveal reveal-delay-2"></div>
 
     <div class="timeline reveal reveal-delay-3">
       <!-- Orange -->
       <div class="timeline-item" onclick="toggleTimeline(this)">
-        <div class="timeline-date">09/2024 – Présent · Montpellier</div>
-        <div class="timeline-title">Data Analyst</div>
-        <div class="timeline-company">Orange France — Service Facturation & Dommages</div>
-        <div class="timeline-toggle">Voir plus ↓</div>
+        <div class="timeline-date" data-i18n="exp-1-date">09/2024 – Présent · Montpellier</div>
+        <div class="timeline-title" data-i18n="exp-1-title">Data Analyst</div>
+        <div class="timeline-company">Orange France — Service Facturation &amp; Dommages</div>
+        <div class="timeline-toggle" data-i18n="toggle-more">Voir plus ↓</div>
         <div class="timeline-desc">
-          <p style="margin-top: 0.75rem;">En rejoignant Orange, j'ai eu l'opportunité de piloter en totale autonomie des projets data de bout en bout : du recueil des besoins terrain jusqu'à la mise en production. Au quotidien, je conçois et développe des outils métier sur mesure, j'automatise des flux de traitement et je construis des tableaux de bord pour aider les équipes à piloter leur activité. J'ai également formé plus de 50 utilisateurs à l'IA générative interne.</p>
+          <p style="margin-top: 0.75rem;" data-i18n="exp-1-desc">En rejoignant Orange, j'ai eu l'opportunité de piloter en totale autonomie des projets data de bout en bout : du recueil des besoins terrain jusqu'à la mise en production. Au quotidien, je conçois et développe des outils métier sur mesure, j'automatise des flux de traitement et je construis des tableaux de bord pour aider les équipes à piloter leur activité. J'ai également formé plus de 50 utilisateurs à l'IA générative interne.</p>
           <div class="timeline-skills">
             <span class="tag">Power Platform</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">VBA</span><span class="tag">SharePoint</span><span class="tag">SAP</span><span class="tag">GCP BigQuery</span>
           </div>
@@ -628,71 +658,71 @@ body::after {
 
       <!-- Australie -->
       <div class="timeline-item" onclick="toggleTimeline(this)">
-        <div class="timeline-date">2023 · Australie</div>
-        <div class="timeline-title">Expérience internationale</div>
+        <div class="timeline-date" data-i18n="exp-2-date">2023 · Australie</div>
+        <div class="timeline-title" data-i18n="exp-2-title">Expérience internationale</div>
         <div class="timeline-company">Rockford Wines · Avorama · Sheraton Hotels</div>
-        <div class="timeline-toggle">Voir plus ↓</div>
+        <div class="timeline-toggle" data-i18n="toggle-more">Voir plus ↓</div>
         <div class="timeline-desc">
-          <p style="margin-top: 0.75rem;">Une année d'immersion dans des environnements très variés : agriculture, industrie agroalimentaire et hôtellerie. Trois secteurs, trois cultures d'entreprise différentes, un fil conducteur : m'adapter vite, être autonome et communiquer efficacement en anglais au quotidien.</p>
+          <p style="margin-top: 0.75rem;" data-i18n="exp-2-desc">Une année d'immersion dans des environnements très variés : agriculture, industrie agroalimentaire et hôtellerie. Trois secteurs, trois cultures d'entreprise différentes, un fil conducteur : m'adapter vite, être autonome et communiquer efficacement en anglais au quotidien.</p>
           <div class="timeline-skills">
-            <span class="tag">Adaptabilité</span><span class="tag">Autonomie</span><span class="tag">Anglais professionnel</span>
+            <span class="tag" data-i18n="tag-adaptabilite">Adaptabilité</span><span class="tag" data-i18n="tag-autonomie">Autonomie</span><span class="tag" data-i18n="tag-anglais-pro">Anglais professionnel</span>
           </div>
         </div>
       </div>
 
       <!-- Pompier Pro -->
       <div class="timeline-item" onclick="toggleTimeline(this)">
-        <div class="timeline-date">01/2022 – 12/2022 · Essonne</div>
-        <div class="timeline-title">Sapeur-Pompier Professionnel</div>
+        <div class="timeline-date" data-i18n="exp-3-date">01/2022 – 12/2022 · Essonne</div>
+        <div class="timeline-title" data-i18n="exp-3-title">Sapeur-Pompier Professionnel</div>
         <div class="timeline-company">SDIS 91</div>
-        <div class="timeline-toggle">Voir plus ↓</div>
+        <div class="timeline-toggle" data-i18n="toggle-more">Voir plus ↓</div>
         <div class="timeline-desc">
-          <p style="margin-top: 0.75rem;">Interventions à fort enjeu humain, dans des environnements critiques où chaque seconde compte. J'ai appris à gérer le stress, prendre des décisions rapides avec des informations parfois incomplètes et prioriser l'essentiel dans des situations complexes.</p>
+          <p style="margin-top: 0.75rem;" data-i18n="exp-3-desc">Interventions à fort enjeu humain, dans des environnements critiques où chaque seconde compte. J'ai appris à gérer le stress, prendre des décisions rapides avec des informations parfois incomplètes et prioriser l'essentiel dans des situations complexes.</p>
           <div class="timeline-skills">
-            <span class="tag">Gestion du stress</span><span class="tag">Travail en équipe</span><span class="tag">Communication</span><span class="tag">Décision rapide</span>
+            <span class="tag" data-i18n="tag-gestion-stress">Gestion du stress</span><span class="tag" data-i18n="tag-travail-equipe">Travail en équipe</span><span class="tag">Communication</span><span class="tag" data-i18n="tag-decision-rapide">Décision rapide</span>
           </div>
         </div>
       </div>
 
       <!-- BNP -->
       <div class="timeline-item" onclick="toggleTimeline(this)">
-        <div class="timeline-date">Étés 2018, 2019, 2020 · Paris</div>
-        <div class="timeline-title">Auxiliaire de Vacances</div>
+        <div class="timeline-date" data-i18n="exp-4-date">Étés 2018, 2019, 2020 · Paris</div>
+        <div class="timeline-title" data-i18n="exp-4-title">Auxiliaire de Vacances</div>
         <div class="timeline-company">BNP Paribas</div>
-        <div class="timeline-toggle">Voir plus ↓</div>
+        <div class="timeline-toggle" data-i18n="toggle-more">Voir plus ↓</div>
         <div class="timeline-desc">
-          <p style="margin-top: 0.75rem;">Trois étés consécutifs au sein de BNP Paribas. Une première immersion dans le monde professionnel, développant rigueur, sens du service et capacité d'adaptation dans un environnement exigeant.</p>
+          <p style="margin-top: 0.75rem;" data-i18n="exp-4-desc">Trois étés consécutifs au sein de BNP Paribas. Une première immersion dans le monde professionnel, développant rigueur, sens du service et capacité d'adaptation dans un environnement exigeant.</p>
           <div class="timeline-skills">
-            <span class="tag">Rigueur</span><span class="tag">Sens du service</span><span class="tag">Adaptabilité</span>
+            <span class="tag" data-i18n="tag-rigueur">Rigueur</span><span class="tag" data-i18n="tag-sens-service">Sens du service</span><span class="tag" data-i18n="tag-adaptabilite">Adaptabilité</span>
           </div>
         </div>
       </div>
 
       <!-- Engagement -->
-      <div class="engagement-label">Engagement & Bénévolat</div>
+      <div class="engagement-label" data-i18n="engagement-label">Engagement &amp; Bénévolat</div>
 
       <div class="timeline-item" onclick="toggleTimeline(this)">
-        <div class="timeline-date">2020 · Paris</div>
-        <div class="timeline-title">Agent de Livraison</div>
+        <div class="timeline-date" data-i18n="exp-5-date">2020 · Paris</div>
+        <div class="timeline-title" data-i18n="exp-5-title">Agent de Livraison</div>
         <div class="timeline-company">Société Saint-Vincent-de-Paul</div>
-        <div class="timeline-toggle">Voir plus ↓</div>
+        <div class="timeline-toggle" data-i18n="toggle-more">Voir plus ↓</div>
         <div class="timeline-desc">
-          <p style="margin-top: 0.75rem;">Durant la crise Covid-19, livraison de colis alimentaires aux personnes les plus vulnérables. Une expérience humaine forte, un rappel de l'importance de mettre ses compétences au service des autres.</p>
+          <p style="margin-top: 0.75rem;" data-i18n="exp-5-desc">Durant la crise Covid-19, livraison de colis alimentaires aux personnes les plus vulnérables. Une expérience humaine forte, un rappel de l'importance de mettre ses compétences au service des autres.</p>
           <div class="timeline-skills">
-            <span class="tag">Solidarité</span><span class="tag">Engagement</span><span class="tag">Responsabilités</span>
+            <span class="tag" data-i18n="tag-solidarite">Solidarité</span><span class="tag" data-i18n="tag-engagement-tag">Engagement</span><span class="tag" data-i18n="tag-responsabilites">Responsabilités</span>
           </div>
         </div>
       </div>
 
       <div class="timeline-item" onclick="toggleTimeline(this)">
-        <div class="timeline-date">02/2020 – 12/2024 · Essonne</div>
-        <div class="timeline-title">Sapeur-Pompier Volontaire</div>
+        <div class="timeline-date" data-i18n="exp-6-date">02/2020 – 12/2024 · Essonne</div>
+        <div class="timeline-title" data-i18n="exp-6-title">Sapeur-Pompier Volontaire</div>
         <div class="timeline-company">SDIS 91</div>
-        <div class="timeline-toggle">Voir plus ↓</div>
+        <div class="timeline-toggle" data-i18n="toggle-more">Voir plus ↓</div>
         <div class="timeline-desc">
-          <p style="margin-top: 0.75rem;">5 ans d'engagement bénévole en parallèle de mes autres activités. Une vocation portée par des valeurs de solidarité, d'engagement et de service aux autres.</p>
+          <p style="margin-top: 0.75rem;" data-i18n="exp-6-desc">5 ans d'engagement bénévole en parallèle de mes autres activités. Une vocation portée par des valeurs de solidarité, d'engagement et de service aux autres.</p>
           <div class="timeline-skills">
-            <span class="tag">Adaptabilité</span><span class="tag">Solidarité</span><span class="tag">Travail en équipe</span>
+            <span class="tag" data-i18n="tag-adaptabilite">Adaptabilité</span><span class="tag" data-i18n="tag-solidarite">Solidarité</span><span class="tag" data-i18n="tag-travail-equipe">Travail en équipe</span>
           </div>
         </div>
       </div>
@@ -703,27 +733,27 @@ body::after {
 <!-- ═══════════════════ FORMATION ═══════════════════ -->
 <section id="formation">
   <div class="container">
-    <div class="section-label reveal">04 — Formation</div>
-    <h2 class="section-title reveal reveal-delay-1">Parcours académique</h2>
+    <div class="section-label reveal" data-i18n="edu-label">04 — Formation</div>
+    <h2 class="section-title reveal reveal-delay-1" data-i18n="edu-title">Parcours académique</h2>
     <div class="section-divider reveal reveal-delay-2"></div>
 
     <div class="formation-grid reveal reveal-delay-3">
       <div class="formation-card">
         <div class="timeline-date">09/2024 – Présent</div>
-        <h3>Data Analyst — Titre RNCP Niveau 6</h3>
+        <h3 data-i18n="edu-1-title">Data Analyst — Titre RNCP Niveau 6</h3>
         <div class="sub">OpenClassrooms / CFA Orange</div>
-        <p>Formation en alternance ancrée dans le concret : chaque compétence acquise est immédiatement testée, challengée et appliquée sur de vrais projets métier au sein d'Orange.</p>
+        <p data-i18n="edu-1-desc">Formation en alternance ancrée dans le concret : chaque compétence acquise est immédiatement testée, challengée et appliquée sur de vrais projets métier au sein d'Orange.</p>
         <div class="timeline-skills" style="margin-top: 1rem;">
           <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">Machine Learning</span>
         </div>
       </div>
       <div class="formation-card">
         <div class="timeline-date">2018 – 2021</div>
-        <h3>Licence Économie et Gestion</h3>
+        <h3 data-i18n="edu-2-title">Licence Économie et Gestion</h3>
         <div class="sub">Université d'Évry</div>
-        <p>Trois ans à comprendre les organisations, les marchés et les mécanismes de décision. Une culture économique et un esprit critique que je retrouve dans mon approche de la data.</p>
+        <p data-i18n="edu-2-desc">Trois ans à comprendre les organisations, les marchés et les mécanismes de décision. Une culture économique et un esprit critique que je retrouve dans mon approche de la data.</p>
         <div class="timeline-skills" style="margin-top: 1rem;">
-          <span class="tag">Analyse économique</span><span class="tag">Gestion</span><span class="tag">Esprit critique</span>
+          <span class="tag" data-i18n="tag-analyse-eco">Analyse économique</span><span class="tag" data-i18n="tag-gestion-mgmt">Gestion</span><span class="tag" data-i18n="tag-esprit-critique">Esprit critique</span>
         </div>
       </div>
     </div>
@@ -733,51 +763,64 @@ body::after {
 <!-- ═══════════════════ COMPETENCES ═══════════════════ -->
 <section id="competences">
   <div class="container">
-    <div class="section-label reveal">05 — Compétences</div>
-    <h2 class="section-title reveal reveal-delay-1">Savoir-faire</h2>
+    <div class="section-label reveal" data-i18n="skills-label">05 — Compétences</div>
+    <h2 class="section-title reveal reveal-delay-1" data-i18n="skills-title">Savoir-faire</h2>
     <div class="section-divider reveal reveal-delay-2"></div>
 
     <div class="skills-grid reveal reveal-delay-3">
       <div class="skill-category">
-        <div class="skill-cat-title">Techniques</div>
-        <p>Power BI, Python, SQL, Power Platform, VBA, GCP BigQuery, SAP — un socle solide et polyvalent, forgé au fil de mes projets chez Orange.</p>
+        <div class="skill-cat-title" data-i18n="skill-cat-1-title">Techniques</div>
+        <p data-i18n="skill-cat-1-p">Power BI, Python, SQL, Power Platform, VBA, GCP BigQuery, SAP — un socle solide et polyvalent, forgé au fil de mes projets chez Orange.</p>
       </div>
       <div class="skill-category">
-        <div class="skill-cat-title">Méthodologies</div>
-        <p>Gestion de projet end-to-end, Data Pipelines, ETL, automatisation. Si une tâche est répétitive, je cherche toujours comment la rendre plus efficace.</p>
+        <div class="skill-cat-title" data-i18n="skill-cat-2-title">Méthodologies</div>
+        <p data-i18n="skill-cat-2-p">Gestion de projet end-to-end, Data Pipelines, ETL, automatisation. Si une tâche est répétitive, je cherche toujours comment la rendre plus efficace.</p>
       </div>
       <div class="skill-category">
-        <div class="skill-cat-title">Soft Skills</div>
-        <p>Gestion du stress, prise de décision rapide, adaptabilité, autonomie, communication — des qualités forgées par un parcours atypique.</p>
+        <div class="skill-cat-title" data-i18n="skill-cat-3-title">Soft Skills</div>
+        <p data-i18n="skill-cat-3-p">Gestion du stress, prise de décision rapide, adaptabilité, autonomie, communication — des qualités forgées par un parcours atypique.</p>
       </div>
     </div>
 
     <div class="skills-overview reveal" style="margin-top: 2.5rem;">
-      <h3>En un coup d'œil</h3>
+      <h3 data-i18n="skills-overview-h3">En un coup d'œil</h3>
       <div class="overview-grid">
         <div class="overview-col">
-          <h4>Data & BI</h4>
+          <h4>Data &amp; BI</h4>
           <ul><li>Power BI</li><li>Python</li><li>SQL</li><li>DAX</li></ul>
         </div>
         <div class="overview-col">
-          <h4>Dev & Auto.</h4>
+          <h4>Dev &amp; Auto.</h4>
           <ul><li>Power Apps</li><li>Power Automate</li><li>VBA</li><li>ETL / Pipeline</li></ul>
         </div>
         <div class="overview-col">
-          <h4>Data & Cloud</h4>
+          <h4>Data &amp; Cloud</h4>
           <ul><li>GCP BigQuery</li><li>SAP</li><li>SharePoint</li><li>GCP</li></ul>
         </div>
         <div class="overview-col">
-          <h4>Méthodologies</h4>
-          <ul><li>Gestion de projet</li><li>Agile</li><li>Automatisation</li><li>End-to-end</li></ul>
+          <h4 data-i18n="col-methods-h4">Méthodologies</h4>
+          <ul>
+            <li data-i18n="method-li-1">Gestion de projet</li>
+            <li>Agile</li>
+            <li data-i18n="method-li-3">Automatisation</li>
+            <li>End-to-end</li>
+          </ul>
         </div>
         <div class="overview-col">
-          <h4>Soft Skills</h4>
-          <ul><li>Autonomie</li><li>Adaptabilité</li><li>Communication</li><li>Gestion du stress</li></ul>
+          <h4 data-i18n="col-softskills-h4">Soft Skills</h4>
+          <ul>
+            <li data-i18n="soft-li-1">Autonomie</li>
+            <li data-i18n="soft-li-2">Adaptabilité</li>
+            <li>Communication</li>
+            <li data-i18n="soft-li-4">Gestion du stress</li>
+          </ul>
         </div>
         <div class="overview-col">
-          <h4>Langues</h4>
-          <ul><li>Français — Natif</li><li>Anglais — Courant</li></ul>
+          <h4 data-i18n="col-langs-h4">Langues</h4>
+          <ul>
+            <li data-i18n="lang-native">Français — Natif</li>
+            <li data-i18n="lang-fluent">Anglais — Courant</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -788,18 +831,18 @@ body::after {
 <section class="quote-section">
   <div class="container">
     <div class="quote-label reveal">Inspiration</div>
-    <p class="quote-text reveal reveal-delay-1">"Ce n'est pas parce que les choses sont difficiles que nous n'osons pas, c'est parce que nous n'osons pas qu'elles sont difficiles."</p>
-    <p class="quote-author reveal reveal-delay-2">— Sénèque</p>
+    <p class="quote-text reveal reveal-delay-1" data-i18n="quote-text">« Ce n'est pas parce que les choses sont difficiles que nous n'osons pas, c'est parce que nous n'osons pas qu'elles sont difficiles. »</p>
+    <p class="quote-author reveal reveal-delay-2" data-i18n="quote-author">— Sénèque</p>
   </div>
 </section>
 
 <!-- ═══════════════════ CONTACT ═══════════════════ -->
 <section id="contact">
   <div class="container">
-    <div class="section-label reveal">06 — Contact</div>
-    <h2 class="section-title reveal reveal-delay-1">Mon profil vous intéresse ?</h2>
+    <div class="section-label reveal" data-i18n="contact-label">06 — Contact</div>
+    <h2 class="section-title reveal reveal-delay-1" data-i18n="contact-title">Mon profil vous intéresse ?</h2>
     <div class="section-divider reveal reveal-delay-2" style="margin-left: auto; margin-right: auto;"></div>
-    <p class="contact-intro reveal reveal-delay-3">N'hésitez pas à me contacter, je serai ravi d'échanger !</p>
+    <p class="contact-intro reveal reveal-delay-3" data-i18n="contact-intro">N'hésitez pas à me contacter, je serai ravi d'échanger !</p>
     <div class="contact-links reveal reveal-delay-4">
       <a href="mailto:thomas.paul.sonzogni@gmail.com" class="contact-link">
         <span>✉</span> Email
@@ -816,10 +859,245 @@ body::after {
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 Thomas Sonzogni — Tous droits réservés</p>
+  <p data-i18n="footer-text">© 2026 Thomas Sonzogni — Tous droits réservés</p>
 </footer>
 
 <script>
+// ─── TRANSLATIONS ───
+const translations = {
+  fr: {
+    'nav-about': 'À propos',
+    'nav-project': 'Projet',
+    'nav-experience': 'Expériences',
+    'nav-education': 'Formation',
+    'nav-skills': 'Compétences',
+    'nav-contact': 'Contact',
+    'hero-tag': 'Data Analyst · Gestion de Projet · Power BI, Python, Power Platform',
+    'hero-subtitle': 'Transformer la donnée en solutions concrètes,<br>utiles et qui font la différence.',
+    'hero-avail': 'Disponible à partir de septembre 2026',
+    'hero-contact-mobile': 'Mobile en France et à l\'international',
+    'about-label': '01 — À propos',
+    'about-title': 'Mon parcours',
+    'about-p1': 'Passionné par la donnée et ce qu\'on peut en faire pour simplifier la vie des gens, j\'ai rejoint Orange en tant que Data Analyst il y a 2 ans. J\'aime piloter des projets de bout en bout, de la collecte à la visualisation, créer des outils métier qui ont un vrai impact et traduire des besoins complexes en solutions simples et efficaces.',
+    'about-p2': 'Avant ça, j\'ai été pompier professionnel et j\'ai vécu une année en Australie. Des expériences très différentes, mais qui m\'ont appris l\'essentiel : m\'adapter rapidement, garder la tête froide dans des situations complexes, travailler en équipe et toujours mettre l\'humain au centre de ce que je fais.',
+    'about-p3': 'Ces expériences ont forgé ma façon d\'aborder les projets data : avec pragmatisme, curiosité et une vraie envie de faire des choses qui ont du sens. Ce qui me motive aujourd\'hui, c\'est de continuer à construire des solutions utiles, à monter en compétences et à relever de nouveaux défis.',
+    'project-label': '02 — Projet phare',
+    'project-context-title': 'Le contexte',
+    'project-context-text': 'Chaque année, des milliers de dommages sont causés sur le réseau Orange par des tiers : travaux de chantier, accidents de la route... Avant OPAGE, les enquêtes étaient gérées manuellement, sans outil structuré, ce qui rendait difficile l\'identification des responsables et le suivi de la performance.',
+    'project-solution-title': 'La solution',
+    'project-solution-text': 'J\'ai conçu et développé OPAGE de A à Z : une application Power Apps complète, connectée à SharePoint et Power BI, pour digitaliser et structurer l\'ensemble du processus d\'enquête. De l\'analyse des besoins métier à la mise en production, en passant par l\'architecture de la solution, le déploiement et la maintenance, j\'ai piloté le projet en totale autonomie, en accompagnant plus de 20 utilisateurs dans la prise en main de l\'outil.',
+    'project-results-title': 'Les résultats',
+    'result-1-desc': 'de tiers identifiés comme responsables en 2025',
+    'result-2-desc': 'au-dessus de la moyenne nationale sur le taux d\'identification',
+    'result-3-desc': 'UCI Occitanie classée 1ère au niveau national',
+    'result-4-desc': 'de l\'objectif annuel atteint — déploiement national en cours',
+    'project-takeaway-title': 'Ce que j\'en retiens',
+    'project-takeaway-text': 'Ce projet m\'a permis de piloter une vraie transformation digitale, de comprendre les enjeux métier et de voir concrètement l\'impact de la data sur le terrain. C\'est exactement ce qui me motive : construire des solutions simples, utiles et qui font vraiment la différence.',
+    'project-github-link': 'Voir mes autres projets sur GitHub',
+    'exp-label': '03 — Expériences',
+    'exp-title': 'Parcours professionnel',
+    'exp-1-date': '09/2024 – Présent · Montpellier',
+    'exp-1-title': 'Data Analyst',
+    'exp-1-desc': 'En rejoignant Orange, j\'ai eu l\'opportunité de piloter en totale autonomie des projets data de bout en bout : du recueil des besoins terrain jusqu\'à la mise en production. Au quotidien, je conçois et développe des outils métier sur mesure, j\'automatise des flux de traitement et je construis des tableaux de bord pour aider les équipes à piloter leur activité. J\'ai également formé plus de 50 utilisateurs à l\'IA générative interne.',
+    'exp-2-date': '2023 · Australie',
+    'exp-2-title': 'Expérience internationale',
+    'exp-2-desc': 'Une année d\'immersion dans des environnements très variés : agriculture, industrie agroalimentaire et hôtellerie. Trois secteurs, trois cultures d\'entreprise différentes, un fil conducteur : m\'adapter vite, être autonome et communiquer efficacement en anglais au quotidien.',
+    'tag-adaptabilite': 'Adaptabilité',
+    'tag-autonomie': 'Autonomie',
+    'tag-anglais-pro': 'Anglais professionnel',
+    'exp-3-date': '01/2022 – 12/2022 · Essonne',
+    'exp-3-title': 'Sapeur-Pompier Professionnel',
+    'exp-3-desc': 'Interventions à fort enjeu humain, dans des environnements critiques où chaque seconde compte. J\'ai appris à gérer le stress, prendre des décisions rapides avec des informations parfois incomplètes et prioriser l\'essentiel dans des situations complexes.',
+    'tag-gestion-stress': 'Gestion du stress',
+    'tag-travail-equipe': 'Travail en équipe',
+    'tag-decision-rapide': 'Décision rapide',
+    'exp-4-date': 'Étés 2018, 2019, 2020 · Paris',
+    'exp-4-title': 'Auxiliaire de Vacances',
+    'exp-4-desc': 'Trois étés consécutifs au sein de BNP Paribas. Une première immersion dans le monde professionnel, développant rigueur, sens du service et capacité d\'adaptation dans un environnement exigeant.',
+    'tag-rigueur': 'Rigueur',
+    'tag-sens-service': 'Sens du service',
+    'engagement-label': 'Engagement & Bénévolat',
+    'exp-5-date': '2020 · Paris',
+    'exp-5-title': 'Agent de Livraison',
+    'exp-5-desc': 'Durant la crise Covid-19, livraison de colis alimentaires aux personnes les plus vulnérables. Une expérience humaine forte, un rappel de l\'importance de mettre ses compétences au service des autres.',
+    'tag-solidarite': 'Solidarité',
+    'tag-engagement-tag': 'Engagement',
+    'tag-responsabilites': 'Responsabilités',
+    'exp-6-date': '02/2020 – 12/2024 · Essonne',
+    'exp-6-title': 'Sapeur-Pompier Volontaire',
+    'exp-6-desc': '5 ans d\'engagement bénévole en parallèle de mes autres activités. Une vocation portée par des valeurs de solidarité, d\'engagement et de service aux autres.',
+    'edu-label': '04 — Formation',
+    'edu-title': 'Parcours académique',
+    'edu-1-title': 'Data Analyst — Titre RNCP Niveau 6',
+    'edu-1-desc': 'Formation en alternance ancrée dans le concret : chaque compétence acquise est immédiatement testée, challengée et appliquée sur de vrais projets métier au sein d\'Orange.',
+    'edu-2-title': 'Licence Économie et Gestion',
+    'edu-2-desc': 'Trois ans à comprendre les organisations, les marchés et les mécanismes de décision. Une culture économique et un esprit critique que je retrouve dans mon approche de la data.',
+    'tag-analyse-eco': 'Analyse économique',
+    'tag-gestion-mgmt': 'Gestion',
+    'tag-esprit-critique': 'Esprit critique',
+    'skills-label': '05 — Compétences',
+    'skills-title': 'Savoir-faire',
+    'skill-cat-1-title': 'Techniques',
+    'skill-cat-1-p': 'Power BI, Python, SQL, Power Platform, VBA, GCP BigQuery, SAP — un socle solide et polyvalent, forgé au fil de mes projets chez Orange.',
+    'skill-cat-2-title': 'Méthodologies',
+    'skill-cat-2-p': 'Gestion de projet end-to-end, Data Pipelines, ETL, automatisation. Si une tâche est répétitive, je cherche toujours comment la rendre plus efficace.',
+    'skill-cat-3-title': 'Soft Skills',
+    'skill-cat-3-p': 'Gestion du stress, prise de décision rapide, adaptabilité, autonomie, communication — des qualités forgées par un parcours atypique.',
+    'skills-overview-h3': 'En un coup d\'œil',
+    'col-methods-h4': 'Méthodologies',
+    'method-li-1': 'Gestion de projet',
+    'method-li-3': 'Automatisation',
+    'col-langs-h4': 'Langues',
+    'lang-native': 'Français — Natif',
+    'lang-fluent': 'Anglais — Courant',
+    'col-softskills-h4': 'Soft Skills',
+    'soft-li-1': 'Autonomie',
+    'soft-li-2': 'Adaptabilité',
+    'soft-li-4': 'Gestion du stress',
+    'quote-text': '« Ce n\'est pas parce que les choses sont difficiles que nous n\'osons pas, c\'est parce que nous n\'osons pas qu\'elles sont difficiles. »',
+    'quote-author': '— Sénèque',
+    'contact-label': '06 — Contact',
+    'contact-title': 'Mon profil vous intéresse ?',
+    'contact-intro': 'N\'hésitez pas à me contacter, je serai ravi d\'échanger !',
+    'footer-text': '© 2026 Thomas Sonzogni — Tous droits réservés',
+    'toggle-more': 'Voir plus ↓',
+    'toggle-less': 'Voir moins ↑',
+  },
+  en: {
+    'nav-about': 'About',
+    'nav-project': 'Project',
+    'nav-experience': 'Experience',
+    'nav-education': 'Education',
+    'nav-skills': 'Skills',
+    'nav-contact': 'Contact',
+    'hero-tag': 'Data Analyst · Project Management · Power BI, Python, Power Platform',
+    'hero-subtitle': 'Turning data into concrete, useful solutions<br>that make a real difference.',
+    'hero-avail': 'Available from September 2026',
+    'hero-contact-mobile': 'Mobile in France and internationally',
+    'about-label': '01 — About',
+    'about-title': 'My Background',
+    'about-p1': 'Passionate about data and what we can do with it to make people\'s lives easier, I joined Orange as a Data Analyst 2 years ago. I love leading projects end-to-end, from data collection to visualization, creating business tools with real impact, and translating complex needs into simple, effective solutions.',
+    'about-p2': 'Before that, I worked as a professional firefighter and spent a year in Australia. Very different experiences, but they taught me the essentials: adapting quickly, staying calm under pressure, working as a team, and always keeping people at the heart of what I do.',
+    'about-p3': 'These experiences shaped the way I approach data projects: with pragmatism, curiosity, and a genuine desire to build things that matter. What drives me today is continuing to build useful solutions, growing my skills, and taking on new challenges.',
+    'project-label': '02 — Featured Project',
+    'project-context-title': 'Context',
+    'project-context-text': 'Every year, thousands of damages are caused to the Orange network by third parties: construction work, road accidents... Before OPAGE, investigations were handled manually, without a structured tool, making it difficult to identify those responsible and track performance.',
+    'project-solution-title': 'Solution',
+    'project-solution-text': 'I designed and developed OPAGE from scratch: a complete Power Apps application, connected to SharePoint and Power BI, to digitize and structure the entire investigation process. From business needs analysis to production deployment, including solution architecture and maintenance, I led the project with full autonomy, onboarding more than 20 users.',
+    'project-results-title': 'Results',
+    'result-1-desc': 'of third parties identified as responsible in 2025',
+    'result-2-desc': 'above the national average for the identification rate',
+    'result-3-desc': 'UCI Occitanie ranked 1st nationally',
+    'result-4-desc': 'of annual target reached — national deployment in progress',
+    'project-takeaway-title': 'Key Takeaway',
+    'project-takeaway-text': 'This project allowed me to lead a real digital transformation, understand business challenges, and see the concrete impact of data in the field. This is exactly what motivates me: building simple, useful solutions that truly make a difference.',
+    'project-github-link': 'See my other projects on GitHub',
+    'exp-label': '03 — Experience',
+    'exp-title': 'Professional Background',
+    'exp-1-date': '09/2024 – Present · Montpellier',
+    'exp-1-title': 'Data Analyst',
+    'exp-1-desc': 'Joining Orange, I had the opportunity to independently lead data projects end-to-end: from gathering field requirements to production deployment. Day-to-day, I design and develop custom business tools, automate processing workflows, and build dashboards to help teams manage their activities. I also trained more than 50 users on internal generative AI.',
+    'exp-2-date': '2023 · Australia',
+    'exp-2-title': 'International Experience',
+    'exp-2-desc': 'A year of immersion in very diverse environments: agriculture, food industry, and hospitality. Three sectors, three different company cultures, one common thread: adapting quickly, being autonomous, and communicating effectively in English on a daily basis.',
+    'tag-adaptabilite': 'Adaptability',
+    'tag-autonomie': 'Autonomy',
+    'tag-anglais-pro': 'Professional English',
+    'exp-3-date': '01/2022 – 12/2022 · Essonne',
+    'exp-3-title': 'Professional Firefighter',
+    'exp-3-desc': 'High-stakes interventions in critical environments where every second counts. I learned to manage stress, make quick decisions with sometimes incomplete information, and prioritize what matters in complex situations.',
+    'tag-gestion-stress': 'Stress Management',
+    'tag-travail-equipe': 'Teamwork',
+    'tag-decision-rapide': 'Quick Decision-Making',
+    'exp-4-date': 'Summers 2018, 2019, 2020 · Paris',
+    'exp-4-title': 'Summer Intern',
+    'exp-4-desc': 'Three consecutive summers at BNP Paribas. A first immersion in the professional world, developing rigor, service orientation, and adaptability in a demanding environment.',
+    'tag-rigueur': 'Rigor',
+    'tag-sens-service': 'Service Orientation',
+    'engagement-label': 'Volunteering & Community',
+    'exp-5-date': '2020 · Paris',
+    'exp-5-title': 'Delivery Agent',
+    'exp-5-desc': 'During the Covid-19 crisis, delivering food parcels to the most vulnerable people. A deeply human experience, a reminder of the importance of putting one\'s skills to work for others.',
+    'tag-solidarite': 'Solidarity',
+    'tag-engagement-tag': 'Commitment',
+    'tag-responsabilites': 'Responsibilities',
+    'exp-6-date': '02/2020 – 12/2024 · Essonne',
+    'exp-6-title': 'Volunteer Firefighter',
+    'exp-6-desc': '5 years of volunteer commitment alongside other activities. A calling driven by values of solidarity, commitment, and service to others.',
+    'edu-label': '04 — Education',
+    'edu-title': 'Academic Background',
+    'edu-1-title': 'Data Analyst — RNCP Level 6 Certification',
+    'edu-1-desc': 'Work-study program grounded in practice: every skill acquired is immediately tested, challenged, and applied to real business projects within Orange.',
+    'edu-2-title': "Bachelor's in Economics & Management",
+    'edu-2-desc': 'Three years studying organizations, markets, and decision-making mechanisms. An economic mindset and critical thinking that I carry into my approach to data.',
+    'tag-analyse-eco': 'Economic Analysis',
+    'tag-gestion-mgmt': 'Management',
+    'tag-esprit-critique': 'Critical Thinking',
+    'skills-label': '05 — Skills',
+    'skills-title': 'Expertise',
+    'skill-cat-1-title': 'Technical',
+    'skill-cat-1-p': 'Power BI, Python, SQL, Power Platform, VBA, GCP BigQuery, SAP — a solid and versatile foundation, built through my projects at Orange.',
+    'skill-cat-2-title': 'Methodologies',
+    'skill-cat-2-p': 'End-to-end project management, Data Pipelines, ETL, automation. If a task is repetitive, I always look for ways to make it more efficient.',
+    'skill-cat-3-title': 'Soft Skills',
+    'skill-cat-3-p': 'Stress management, quick decision-making, adaptability, autonomy, communication — qualities forged by an unconventional career path.',
+    'skills-overview-h3': 'At a Glance',
+    'col-methods-h4': 'Methods',
+    'method-li-1': 'Project Mgmt',
+    'method-li-3': 'Automation',
+    'col-langs-h4': 'Languages',
+    'lang-native': 'French — Native',
+    'lang-fluent': 'English — Fluent',
+    'col-softskills-h4': 'Soft Skills',
+    'soft-li-1': 'Autonomy',
+    'soft-li-2': 'Adaptability',
+    'soft-li-4': 'Stress Mgmt',
+    'quote-text': '"It is not because things are difficult that we do not dare, it is because we do not dare that they are difficult."',
+    'quote-author': '— Seneca',
+    'contact-label': '06 — Contact',
+    'contact-title': 'Interested in my profile?',
+    'contact-intro': "Feel free to reach out — I'd love to connect!",
+    'footer-text': '© 2026 Thomas Sonzogni — All rights reserved',
+    'toggle-more': 'See more ↓',
+    'toggle-less': 'See less ↑',
+  }
+};
+
+let currentLang = localStorage.getItem('lang') || 'fr';
+
+function setLanguage(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.title = lang === 'fr'
+    ? 'Thomas Sonzogni — Data Analyst · Gestion de Projet'
+    : 'Thomas Sonzogni — Data Analyst · Project Management';
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (translations[lang][key] !== undefined) {
+      el.textContent = translations[lang][key];
+    }
+  });
+
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.dataset.i18nHtml;
+    if (translations[lang][key] !== undefined) {
+      el.innerHTML = translations[lang][key];
+    }
+  });
+
+  // Restore correct toggle text for open items
+  document.querySelectorAll('.timeline-item.open .timeline-toggle').forEach(el => {
+    el.textContent = translations[lang]['toggle-less'];
+  });
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+
+  localStorage.setItem('lang', lang);
+}
+
 // Burger menu
 const burger = document.getElementById('burger');
 const mobileMenu = document.getElementById('mobileMenu');
@@ -868,13 +1146,16 @@ function toggleTimeline(item) {
   const wasOpen = item.classList.contains('open');
   document.querySelectorAll('.timeline-item').forEach(i => {
     i.classList.remove('open');
-    i.querySelector('.timeline-toggle').textContent = 'Voir plus \u2193';
+    i.querySelector('.timeline-toggle').textContent = translations[currentLang]['toggle-more'];
   });
   if (!wasOpen) {
     item.classList.add('open');
-    item.querySelector('.timeline-toggle').textContent = 'Voir moins \u2191';
+    item.querySelector('.timeline-toggle').textContent = translations[currentLang]['toggle-less'];
   }
 }
+
+// Initialize language
+setLanguage(currentLang);
 </script>
 </body>
 </html>
