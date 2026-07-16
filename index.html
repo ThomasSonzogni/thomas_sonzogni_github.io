@@ -488,6 +488,49 @@ body::after {
 @media (max-width: 768px) {
   .timeline-item { padding: 0.5rem 0; margin-bottom: 2.5rem; }
 }
+
+/* ─── SEE ALL PROJECTS ─── */
+.see-all-wrap { margin-top: 2.5rem; text-align: center; }
+.see-all-btn {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 0.85rem 2rem;
+  border: 1px solid rgba(245,245,240,0.15);
+  color: var(--gray-200); background: transparent;
+  font-family: var(--font-body); font-size: 0.82rem;
+  font-weight: 500; letter-spacing: 0.1em;
+  cursor: pointer; transition: all 0.3s; text-transform: uppercase;
+}
+.see-all-btn:hover { border-color: rgba(245,245,240,0.4); color: var(--white); }
+.see-all-btn .arrow { transition: transform 0.3s; display: inline-block; font-style: normal; }
+.see-all-btn.open .arrow { transform: rotate(180deg); }
+.all-projects { display: none; margin-top: 2.5rem; }
+.all-projects.open { display: block; }
+.projects-group-title {
+  font-family: var(--font-display); font-size: 1.1rem; font-weight: 600;
+  color: var(--gray-200); margin: 2.5rem 0 1rem;
+  padding-bottom: 0.5rem; border-bottom: 1px solid rgba(245,245,240,0.06);
+}
+.projects-group-title:first-child { margin-top: 0; }
+.mini-cards { display: grid; gap: 0.5rem; }
+.mini-card { border: 1px solid rgba(245,245,240,0.07); transition: border-color 0.3s; }
+.mini-card:hover { border-color: rgba(245,245,240,0.15); }
+.mini-card-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.1rem 1.5rem; cursor: pointer; gap: 1rem;
+}
+.mini-card-info { flex: 1; min-width: 0; }
+.mini-card-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.2rem; }
+.mini-card-meta { font-size: 0.68rem; color: var(--gray-400); letter-spacing: 0.07em; margin-bottom: 0.4rem; text-transform: uppercase; }
+.mini-card-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.mini-card-tags .tag { font-size: 0.62rem; padding: 0.15rem 0.5rem; }
+.mini-card-toggle { font-size: 0.67rem; color: var(--gray-400); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; transition: color 0.3s; flex-shrink: 0; }
+.mini-card:hover .mini-card-toggle { color: var(--gray-200); }
+.mini-card-body { display: none; padding: 0 1.5rem 1.25rem; border-top: 1px solid rgba(245,245,240,0.05); }
+.mini-card-body.open { display: block; }
+.mini-card-body p { color: var(--gray-300); font-size: 0.87rem; font-weight: 300; line-height: 1.75; margin-top: 0.9rem; }
+.mini-card-body .github-link { display: inline-block; margin-top: 0.7rem; color: var(--gray-400); text-decoration: none; font-size: 0.78rem; transition: color 0.3s; letter-spacing: 0.04em; }
+.mini-card-body .github-link:hover { color: var(--white); }
+.mini-card-body .github-link::after { content: ' →'; }
 </style>
 </head>
 <body>
@@ -686,6 +729,290 @@ body::after {
         <a href="https://github.com/ThomasSonzogni" target="_blank" rel="noopener" data-i18n="project-github-link">Voir mes autres projets sur GitHub</a>
       </div>
     </div>
+
+    <!-- See all projects -->
+    <div class="see-all-wrap">
+      <button class="see-all-btn" id="seeAllBtn" onclick="toggleAllProjects()">
+        <span data-i18n="see-all-open">Voir tous mes projets</span>
+        <span class="arrow">▾</span>
+      </button>
+    </div>
+
+    <div class="all-projects" id="allProjects">
+
+      <!-- ── ENTREPRISE ── -->
+      <div class="projects-group-title" data-i18n="group-entreprise">Projets Entreprise</div>
+      <div class="mini-cards">
+
+        <div class="mini-card">
+          <div class="mini-card-header" onclick="toggleMiniCard(this)">
+            <div class="mini-card-info">
+              <div class="mini-card-title" data-i18n="e1-title">Pilotage Lettres de Commande</div>
+              <div class="mini-card-meta" data-i18n="e1-meta">Orange · Power BI · BigQuery GCP · Power Automate</div>
+              <div class="mini-card-tags">
+                <span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">BigQuery GCP</span><span class="tag">Power Automate</span><span class="tag">SAP</span>
+              </div>
+            </div>
+            <div class="mini-card-toggle">Voir plus</div>
+          </div>
+          <div class="mini-card-body">
+            <p data-i18n="e1-desc">Rapport Power BI multi-sources croisant les données de l'infocentre SI, un fichier de liaison et BigQuery GCP. Intégration de projections DAX et d'un processus Power Automate pour automatiser les mises à jour. Résultat : 30 minutes gagnées par consultation, déploiement national en discussion.</p>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <div class="mini-card-header" onclick="toggleMiniCard(this)">
+            <div class="mini-card-info">
+              <div class="mini-card-title" data-i18n="e2-title">Automatisation Montants Négatifs</div>
+              <div class="mini-card-meta" data-i18n="e2-meta">Orange · Power Automate · Office Scripts JS</div>
+              <div class="mini-card-tags">
+                <span class="tag">Power Automate</span><span class="tag">Office Scripts</span><span class="tag">JavaScript</span>
+              </div>
+            </div>
+            <div class="mini-card-toggle">Voir plus</div>
+          </div>
+          <div class="mini-card-body">
+            <p data-i18n="e2-desc">Pipeline d'automatisation complète via Power Automate et 4 scripts Office en JavaScript : traitement d'un e-mail entrant, extraction et traitement des données, puis diffusion automatique via Teams. Une journée entière économisée à chaque exécution.</p>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <div class="mini-card-header" onclick="toggleMiniCard(this)">
+            <div class="mini-card-info">
+              <div class="mini-card-title" data-i18n="e3-title">Modernisation Suivi Facturation</div>
+              <div class="mini-card-meta" data-i18n="e3-meta">Orange · Power Apps · SharePoint · Power BI</div>
+              <div class="mini-card-tags">
+                <span class="tag">Power Apps</span><span class="tag">SharePoint</span><span class="tag">Power Automate</span><span class="tag">Power BI</span><span class="tag">VBA</span>
+              </div>
+            </div>
+            <div class="mini-card-toggle">Voir plus</div>
+          </div>
+          <div class="mini-card-body">
+            <p data-i18n="e3-desc">Migration d'un fichier Excel/VBA vers un écosystème Power Platform complet : application Power Apps connectée à SharePoint, flux Power Automate et tableau de bord Power BI. Une modernisation complète du processus de suivi de facturation, plus fiable et collaborative.</p>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <div class="mini-card-header" onclick="toggleMiniCard(this)">
+            <div class="mini-card-info">
+              <div class="mini-card-title" data-i18n="e4-title">Automatisation Traitement Fournisseurs</div>
+              <div class="mini-card-meta" data-i18n="e4-meta">Orange · VBA · Excel</div>
+              <div class="mini-card-tags">
+                <span class="tag">VBA</span><span class="tag">Excel</span><span class="tag">Automatisation</span>
+              </div>
+            </div>
+            <div class="mini-card-toggle">Voir plus</div>
+          </div>
+          <div class="mini-card-body">
+            <p data-i18n="e4-desc">Développement de 3 macros VBA structurées (pré-traitement, ventilation, reconstitution) pour automatiser le traitement des données fournisseurs. Résultat : une journée entière économisée à chaque exécution.</p>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <div class="mini-card-header" onclick="toggleMiniCard(this)">
+            <div class="mini-card-info">
+              <div class="mini-card-title" data-i18n="e5-title">Formation IA Générative Dinootoo</div>
+              <div class="mini-card-meta" data-i18n="e5-meta">Orange · IA Générative · 50 collaborateurs</div>
+              <div class="mini-card-tags">
+                <span class="tag">IA Générative</span><span class="tag">Prompt Engineering</span><span class="tag">Formation</span>
+              </div>
+            </div>
+            <div class="mini-card-toggle">Voir plus</div>
+          </div>
+          <div class="mini-card-body">
+            <p data-i18n="e5-desc">Conception et animation d'un programme de formation à l'IA générative interne (Dinootoo) pour 50 collaborateurs. Développé en deux versions (V1 → V2) avec des exercices de prompt engineering pratiques, adaptés aux métiers de chaque apprenant.</p>
+          </div>
+        </div>
+
+      </div><!-- /mini-cards entreprise -->
+
+      <!-- ── FORMATION ── -->
+      <div class="projects-group-title" data-i18n="group-formation">Projets Formation</div>
+      <div class="mini-cards">
+
+        <div class="mini-card">
+          <div class="mini-card-header" onclick="toggleMiniCard(this)">
+            <div class="mini-card-info">
+              <div class="mini-card-title" data-i18n="f2-title">Analyse de marché e-commerce</div>
+              <div class="mini-card-meta" data-i18n="f2-meta">OpenClassrooms · Oct 2024 · ~2 jours</div>
+              <div class="mini-card-tags">
+                <span class="tag">Excel</span><span class="tag">PowerPoint</span>
+              </div>
+            </div>
+            <div class="mini-card-toggle">Voir plus</div>
+          </div>
+          <div class="mini-card-body">
+            <p data-i18n="f2-desc">Rapport de marché e-commerce structuré sur Excel et PowerPoint. Premier projet de la formation, axé sur l'analyse de données et la restitution professionnelle.</p>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <div class="mini-card-header" onclick="toggleMiniCard(this)">
+            <div class="mini-card-info">
+              <div class="mini-card-title" data-i18n="f3-title">Base de données marché assurances</div>
+              <div class="mini-card-meta" data-i18n="f3-meta">OpenClassrooms · Oct-Nov 2024 · ~2 semaines</div>
+              <div class="mini-card-tags">
+                <span class="tag">SQL</span><span class="tag">PostgreSQL</span>
+              </div>
+            </div>
+            <div class="mini-card-toggle">Voir plus</div>
+          </div>
+          <div class="mini-card-body">
+            <p data-i18n="f3-desc">Création d'une base de données relationnelle SQL pour analyser le marché des assurances habitation. Modélisation, requêtes complexes et restitution des insights clés.</p>
+            <a href="https://github.com/ThomasSonzogni/Analyse_marche_assurances_habitation" target="_blank" rel="noopener" class="github-link">GitHub</a>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <div class="mini-card-header" onclick="toggleMiniCard(this)">
+            <div class="mini-card-info">
+              <div class="mini-card-title" data-i18n="f4-title">Étude santé publique (FAO)</div>
+              <div class="mini-card-meta" data-i18n="f4-meta">OpenClassrooms · Nov 2024 · ~1 mois</div>
+              <div class="mini-card-tags">
+                <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span>
+              </div>
+            </div>
+            <div class="mini-card-toggle">Voir plus</div>
+          </div>
+          <div class="mini-card-body">
+            <p data-i18n="f4-desc">Analyse de données FAO sur la santé publique mondiale avec Python (Pandas, Matplotlib). Nettoyage, exploration et visualisation de jeux de données internationaux.</p>
+            <a href="https://github.com/ThomasSonzogni/Etude-Sante-Publique-avec-Python-OC" target="_blank" rel="noopener" class="github-link">GitHub</a>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <div class="mini-card-header" onclick="toggleMiniCard(this)">
+            <div class="mini-card-info">
+              <div class="mini-card-title" data-i18n="f5-title">Base de données immobilières</div>
+              <div class="mini-card-meta" data-i18n="f5-meta">OpenClassrooms · Nov-Déc 2024 · ~1 mois</div>
+              <div class="mini-card-tags">
+                <span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag">Modélisation</span>
+              </div>
+            </div>
+            <div class="mini-card-toggle">Voir plus</div>
+          </div>
+          <div class="mini-card-body">
+            <p data-i18n="f5-desc">Conception avancée d'une base de données immobilières en SQL : modélisation relationnelle, triggers, vues et requêtes complexes pour répondre à des besoins métier réels.</p>
+            <a href="https://github.com/ThomasSonzogni/DATAIMMO_Base_de_donnees_immobilieres" target="_blank" rel="noopener" class="github-link">GitHub</a>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <div class="mini-card-header" onclick="toggleMiniCard(this)">
+            <div class="mini-card-info">
+              <div class="mini-card-title" data-i18n="f6-title">Gestion données boutique en ligne</div>
+              <div class="mini-card-meta" data-i18n="f6-meta">OpenClassrooms · Jan-Fév 2025 · ~1 mois</div>
+              <div class="mini-card-tags">
+                <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Data Cleaning</span>
+              </div>
+            </div>
+            <div class="mini-card-toggle">Voir plus</div>
+          </div>
+          <div class="mini-card-body">
+            <p data-i18n="f6-desc">Projet de data cleaning et gestion de données pour une boutique en ligne avec Python. Traitement des anomalies, doublons, valeurs manquantes et production de données propres et exploitables.</p>
+            <a href="https://github.com/ThomasSonzogni/Gestion_Donnees_Boutique_Python" target="_blank" rel="noopener" class="github-link">GitHub</a>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <div class="mini-card-header" onclick="toggleMiniCard(this)">
+            <div class="mini-card-info">
+              <div class="mini-card-title" data-i18n="f7-title">Dashboard PMO Power BI</div>
+              <div class="mini-card-meta" data-i18n="f7-meta">OpenClassrooms · Avr-Mai 2025 · ~1 mois</div>
+              <div class="mini-card-tags">
+                <span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">RLS</span>
+              </div>
+            </div>
+            <div class="mini-card-toggle">Voir plus</div>
+          </div>
+          <div class="mini-card-body">
+            <p data-i18n="f7-desc">Tableau de bord PMO (Project Management Office) sur Power BI avec 5 onglets thématiques et sécurité au niveau des lignes (RLS). Un rapport complet pour le pilotage de portefeuille de projets.</p>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <div class="mini-card-header" onclick="toggleMiniCard(this)">
+            <div class="mini-card-info">
+              <div class="mini-card-title" data-i18n="f8-title">Pipeline égalité femmes-hommes</div>
+              <div class="mini-card-meta" data-i18n="f8-meta">OpenClassrooms · Mai 2025 · ~1 mois</div>
+              <div class="mini-card-tags">
+                <span class="tag">KNIME</span><span class="tag">ETL</span><span class="tag">Data Pipeline</span>
+              </div>
+            </div>
+            <div class="mini-card-toggle">Voir plus</div>
+          </div>
+          <div class="mini-card-body">
+            <p data-i18n="f8-desc">Construction d'un pipeline ETL avec KNIME pour analyser les indicateurs d'égalité femmes-hommes. Automatisation du flux depuis la collecte jusqu'à la production de KPIs.</p>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <div class="mini-card-header" onclick="toggleMiniCard(this)">
+            <div class="mini-card-info">
+              <div class="mini-card-title" data-i18n="f9-title">Analyse statistique librairie</div>
+              <div class="mini-card-meta" data-i18n="f9-meta">OpenClassrooms · Sept 2025 · ~1 mois</div>
+              <div class="mini-card-tags">
+                <span class="tag">Python</span><span class="tag">Statistiques</span><span class="tag">SciPy</span>
+              </div>
+            </div>
+            <div class="mini-card-toggle">Voir plus</div>
+          </div>
+          <div class="mini-card-body">
+            <p data-i18n="f9-desc">Analyse statistique des ventes d'une librairie avec Python. Tests statistiques, corrélations et modélisation pour identifier les leviers de performance.</p>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <div class="mini-card-header" onclick="toggleMiniCard(this)">
+            <div class="mini-card-info">
+              <div class="mini-card-title" data-i18n="f11-title">Étude de marché internationale</div>
+              <div class="mini-card-meta" data-i18n="f11-meta">OpenClassrooms · Oct 2025 · ~2 mois</div>
+              <div class="mini-card-tags">
+                <span class="tag">Python</span><span class="tag">ACP</span><span class="tag">K-means</span><span class="tag">Machine Learning</span>
+              </div>
+            </div>
+            <div class="mini-card-toggle">Voir plus</div>
+          </div>
+          <div class="mini-card-body">
+            <p data-i18n="f11-desc">Étude de marché internationale avec segmentation client via analyse en composantes principales (ACP) et clustering K-means. Identification de profils de marchés cibles pour une stratégie d'expansion.</p>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <div class="mini-card-header" onclick="toggleMiniCard(this)">
+            <div class="mini-card-info">
+              <div class="mini-card-title" data-i18n="f10-title">Dashboard accès à l'eau (ONG)</div>
+              <div class="mini-card-meta" data-i18n="f10-meta">OpenClassrooms · Fév 2026 · ~1 mois</div>
+              <div class="mini-card-tags">
+                <span class="tag">Power BI</span><span class="tag">DAX</span>
+              </div>
+            </div>
+            <div class="mini-card-toggle">Voir plus</div>
+          </div>
+          <div class="mini-card-body">
+            <p data-i18n="f10-desc">Tableau de bord Power BI pour une ONG travaillant sur l'accès à l'eau dans le monde. Visualisation de données géographiques et indicateurs de suivi de projets humanitaires.</p>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <div class="mini-card-header" onclick="toggleMiniCard(this)">
+            <div class="mini-card-info">
+              <div class="mini-card-title" data-i18n="f12-title">Détection de faux billets (ML)</div>
+              <div class="mini-card-meta" data-i18n="f12-meta">OpenClassrooms · Fév 2026 · ~1 mois</div>
+              <div class="mini-card-tags">
+                <span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Scikit-learn</span>
+              </div>
+            </div>
+            <div class="mini-card-toggle">Voir plus</div>
+          </div>
+          <div class="mini-card-body">
+            <p data-i18n="f12-desc">Modèle de machine learning pour la détection automatique de faux billets. Entraînement, optimisation et évaluation de plusieurs algorithmes de classification supervisée.</p>
+          </div>
+        </div>
+
+      </div><!-- /mini-cards formation -->
+    </div><!-- /all-projects -->
+
   </div>
 </section>
 
@@ -942,6 +1269,60 @@ const translations = {
     'contact-title': 'Mon profil vous intéresse ?',
     'contact-intro': 'N\'hésitez pas à me contacter, je serai ravi d\'échanger !',
     'footer-text': '© 2026 Thomas Sonzogni — Tous droits réservés',
+    'see-all-open': 'Voir tous mes projets',
+    'see-all-close': 'Voir moins de projets',
+    'mini-toggle-more': 'Voir plus',
+    'mini-toggle-less': 'Voir moins',
+    'group-entreprise': 'Projets Entreprise',
+    'group-formation': 'Projets Formation',
+    'e1-title': 'Pilotage Lettres de Commande',
+    'e1-meta': 'Orange · Power BI · BigQuery GCP · Power Automate',
+    'e1-desc': 'Rapport Power BI multi-sources croisant les données de l\'infocentre SI, un fichier de liaison et BigQuery GCP. Intégration de projections DAX et d\'un processus Power Automate pour automatiser les mises à jour. Résultat : 30 minutes gagnées par consultation, déploiement national en discussion.',
+    'e2-title': 'Automatisation Montants Négatifs',
+    'e2-meta': 'Orange · Power Automate · Office Scripts JS',
+    'e2-desc': 'Pipeline d\'automatisation complète via Power Automate et 4 scripts Office en JavaScript : traitement d\'un e-mail entrant, extraction et traitement des données, puis diffusion automatique via Teams. Une journée entière économisée à chaque exécution.',
+    'e3-title': 'Modernisation Suivi Facturation',
+    'e3-meta': 'Orange · Power Apps · SharePoint · Power BI',
+    'e3-desc': 'Migration d\'un fichier Excel/VBA vers un écosystème Power Platform complet : application Power Apps connectée à SharePoint, flux Power Automate et tableau de bord Power BI. Une modernisation complète du processus de suivi de facturation, plus fiable et collaborative.',
+    'e4-title': 'Automatisation Traitement Fournisseurs',
+    'e4-meta': 'Orange · VBA · Excel',
+    'e4-desc': 'Développement de 3 macros VBA structurées (pré-traitement, ventilation, reconstitution) pour automatiser le traitement des données fournisseurs. Résultat : une journée entière économisée à chaque exécution.',
+    'e5-title': 'Formation IA Générative Dinootoo',
+    'e5-meta': 'Orange · IA Générative · 50 collaborateurs',
+    'e5-desc': 'Conception et animation d\'un programme de formation à l\'IA générative interne (Dinootoo) pour 50 collaborateurs. Développé en deux versions (V1 → V2) avec des exercices de prompt engineering pratiques, adaptés aux métiers de chaque apprenant.',
+    'f2-title': 'Analyse de marché e-commerce',
+    'f2-meta': 'OpenClassrooms · Oct 2024 · ~2 jours',
+    'f2-desc': 'Rapport de marché e-commerce structuré sur Excel et PowerPoint. Premier projet de la formation, axé sur l\'analyse de données et la restitution professionnelle.',
+    'f3-title': 'Base de données marché assurances',
+    'f3-meta': 'OpenClassrooms · Oct-Nov 2024 · ~2 semaines',
+    'f3-desc': 'Création d\'une base de données relationnelle SQL pour analyser le marché des assurances habitation. Modélisation, requêtes complexes et restitution des insights clés.',
+    'f4-title': 'Étude santé publique (FAO)',
+    'f4-meta': 'OpenClassrooms · Nov 2024 · ~1 mois',
+    'f4-desc': 'Analyse de données FAO sur la santé publique mondiale avec Python (Pandas, Matplotlib). Nettoyage, exploration et visualisation de jeux de données internationaux.',
+    'f5-title': 'Base de données immobilières',
+    'f5-meta': 'OpenClassrooms · Nov-Déc 2024 · ~1 mois',
+    'f5-desc': 'Conception avancée d\'une base de données immobilières en SQL : modélisation relationnelle, triggers, vues et requêtes complexes pour répondre à des besoins métier réels.',
+    'f6-title': 'Gestion données boutique en ligne',
+    'f6-meta': 'OpenClassrooms · Jan-Fév 2025 · ~1 mois',
+    'f6-desc': 'Projet de data cleaning et gestion de données pour une boutique en ligne avec Python. Traitement des anomalies, doublons, valeurs manquantes et production de données propres et exploitables.',
+    'f7-title': 'Dashboard PMO Power BI',
+    'f7-meta': 'OpenClassrooms · Avr-Mai 2025 · ~1 mois',
+    'f7-desc': 'Tableau de bord PMO (Project Management Office) sur Power BI avec 5 onglets thématiques et sécurité au niveau des lignes (RLS). Un rapport complet pour le pilotage de portefeuille de projets.',
+    'f8-title': 'Pipeline égalité femmes-hommes',
+    'f8-meta': 'OpenClassrooms · Mai 2025 · ~1 mois',
+    'f8-desc': 'Construction d\'un pipeline ETL avec KNIME pour analyser les indicateurs d\'égalité femmes-hommes. Automatisation du flux depuis la collecte jusqu\'à la production de KPIs.',
+    'f9-title': 'Analyse statistique librairie',
+    'f9-meta': 'OpenClassrooms · Sept 2025 · ~1 mois',
+    'f9-desc': 'Analyse statistique des ventes d\'une librairie avec Python. Tests statistiques, corrélations et modélisation pour identifier les leviers de performance.',
+    'f10-title': 'Dashboard accès à l\'eau (ONG)',
+    'f10-meta': 'OpenClassrooms · Fév 2026 · ~1 mois',
+    'f10-desc': 'Tableau de bord Power BI pour une ONG travaillant sur l\'accès à l\'eau dans le monde. Visualisation de données géographiques et indicateurs de suivi de projets humanitaires.',
+    'f11-title': 'Étude de marché internationale',
+    'f11-meta': 'OpenClassrooms · Oct 2025 · ~2 mois',
+    'f11-desc': 'Étude de marché internationale avec segmentation client via analyse en composantes principales (ACP) et clustering K-means. Identification de profils de marchés cibles pour une stratégie d\'expansion.',
+    'f12-title': 'Détection de faux billets (ML)',
+    'f12-meta': 'OpenClassrooms · Fév 2026 · ~1 mois',
+    'f12-desc': 'Modèle de machine learning pour la détection automatique de faux billets. Entraînement, optimisation et évaluation de plusieurs algorithmes de classification supervisée.',
   },
   en: {
     'nav-about': 'About',
@@ -1038,6 +1419,60 @@ const translations = {
     'contact-title': 'Interested in my profile?',
     'contact-intro': "Feel free to reach out — I'd love to connect!",
     'footer-text': '© 2026 Thomas Sonzogni — All rights reserved',
+    'see-all-open': 'See all my projects',
+    'see-all-close': 'See fewer projects',
+    'mini-toggle-more': 'Show more',
+    'mini-toggle-less': 'Show less',
+    'group-entreprise': 'Enterprise Projects',
+    'group-formation': 'Training Projects',
+    'e1-title': 'Purchase Order Tracking',
+    'e1-meta': 'Orange · Power BI · BigQuery GCP · Power Automate',
+    'e1-desc': 'Multi-source Power BI report combining SI infocentre data, a liaison file, and BigQuery GCP. Includes DAX projections and a Power Automate pipeline to automate updates. Result: 30 minutes saved per consultation, national deployment under discussion.',
+    'e2-title': 'Negative Amounts Automation',
+    'e2-meta': 'Orange · Power Automate · Office Scripts JS',
+    'e2-desc': 'Full automation pipeline using Power Automate and 4 Office Scripts (JavaScript): processes an incoming email, extracts and handles the data, then distributes it automatically via Teams. A full working day saved per execution.',
+    'e3-title': 'Billing Tracking Modernization',
+    'e3-meta': 'Orange · Power Apps · SharePoint · Power BI',
+    'e3-desc': 'Migration from an Excel/VBA file to a full Power Platform ecosystem: Power Apps connected to SharePoint, Power Automate workflows, and a Power BI dashboard. A complete modernization of the billing tracking process — more reliable and collaborative.',
+    'e4-title': 'Supplier Data Processing Automation',
+    'e4-meta': 'Orange · VBA · Excel',
+    'e4-desc': 'Development of 3 structured VBA macros (preprocessing, allocation, reconstitution) to automate supplier data processing. Result: a full working day saved per execution.',
+    'e5-title': 'Dinootoo Generative AI Training',
+    'e5-meta': 'Orange · Generative AI · 50 employees',
+    'e5-desc': 'Design and delivery of a training program on internal generative AI (Dinootoo) for 50 employees. Developed in two versions (V1 → V2) with hands-on prompt engineering exercises tailored to each learner\'s role.',
+    'f2-title': 'E-commerce Market Analysis',
+    'f2-meta': 'OpenClassrooms · Oct 2024 · ~2 days',
+    'f2-desc': 'E-commerce market report built with Excel and PowerPoint. First training project, focused on data analysis and professional presentation.',
+    'f3-title': 'Insurance Market Database',
+    'f3-meta': 'OpenClassrooms · Oct-Nov 2024 · ~2 weeks',
+    'f3-desc': 'Creation of a relational SQL database to analyze the home insurance market. Data modeling, complex queries, and key insights reporting.',
+    'f4-title': 'Public Health Study (FAO)',
+    'f4-meta': 'OpenClassrooms · Nov 2024 · ~1 month',
+    'f4-desc': 'Analysis of FAO data on global public health using Python (Pandas, Matplotlib). Data cleaning, exploration, and visualization of international datasets.',
+    'f5-title': 'Real Estate Database',
+    'f5-meta': 'OpenClassrooms · Nov-Dec 2024 · ~1 month',
+    'f5-desc': 'Advanced SQL database design for real estate data: relational modeling, triggers, views, and complex queries to meet real business needs.',
+    'f6-title': 'Online Shop Data Management',
+    'f6-meta': 'OpenClassrooms · Jan-Feb 2025 · ~1 month',
+    'f6-desc': 'Data cleaning and management project for an online shop using Python. Handling anomalies, duplicates, missing values, and producing clean, usable data.',
+    'f7-title': 'Power BI PMO Dashboard',
+    'f7-meta': 'OpenClassrooms · Apr-May 2025 · ~1 month',
+    'f7-desc': 'PMO (Project Management Office) Power BI dashboard with 5 themed tabs and Row-Level Security (RLS). A comprehensive report for project portfolio management.',
+    'f8-title': 'Gender Equality Data Pipeline',
+    'f8-meta': 'OpenClassrooms · May 2025 · ~1 month',
+    'f8-desc': 'Building an ETL data pipeline with KNIME to analyze gender equality indicators. Automated flow from data collection to KPI production.',
+    'f9-title': 'Bookstore Statistical Analysis',
+    'f9-meta': 'OpenClassrooms · Sept 2025 · ~1 month',
+    'f9-desc': 'Statistical analysis of a bookstore\'s sales data using Python. Statistical tests, correlations, and modeling to identify performance drivers.',
+    'f10-title': 'Water Access Dashboard (NGO)',
+    'f10-meta': 'OpenClassrooms · Feb 2026 · ~1 month',
+    'f10-desc': 'Power BI dashboard for an NGO working on global water access. Geographic data visualization and tracking indicators for humanitarian projects.',
+    'f11-title': 'International Market Study',
+    'f11-meta': 'OpenClassrooms · Oct 2025 · ~2 months',
+    'f11-desc': 'International market study with customer segmentation via Principal Component Analysis (PCA) and K-means clustering. Identification of target market profiles for an expansion strategy.',
+    'f12-title': 'Counterfeit Banknote Detection (ML)',
+    'f12-meta': 'OpenClassrooms · Feb 2026 · ~1 month',
+    'f12-desc': 'Machine learning model for automatic counterfeit banknote detection. Training, optimization, and evaluation of several supervised classification algorithms.',
   }
 };
 
@@ -1068,7 +1503,31 @@ function setLanguage(lang) {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
 
+  // Update mini-card toggle labels based on open/closed state
+  document.querySelectorAll('.mini-card-toggle').forEach(toggle => {
+    const body = toggle.closest('.mini-card').querySelector('.mini-card-body');
+    toggle.textContent = translations[lang][body.classList.contains('open') ? 'mini-toggle-less' : 'mini-toggle-more'];
+  });
+
   localStorage.setItem('lang', lang);
+}
+
+function toggleAllProjects() {
+  const btn = document.getElementById('seeAllBtn');
+  const panel = document.getElementById('allProjects');
+  const isOpen = btn.classList.toggle('open');
+  panel.classList.toggle('open');
+  const textSpan = btn.querySelector('[data-i18n]');
+  const key = isOpen ? 'see-all-close' : 'see-all-open';
+  textSpan.setAttribute('data-i18n', key);
+  textSpan.textContent = translations[currentLang][key];
+}
+
+function toggleMiniCard(header) {
+  const body = header.closest('.mini-card').querySelector('.mini-card-body');
+  const toggle = header.querySelector('.mini-card-toggle');
+  const isOpen = body.classList.toggle('open');
+  toggle.textContent = translations[currentLang][isOpen ? 'mini-toggle-less' : 'mini-toggle-more'];
 }
 
 // Burger menu
