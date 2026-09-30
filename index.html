@@ -653,7 +653,7 @@ body::after {
           <ul><li>Power BI</li><li>Python</li><li>SQL</li><li>DAX</li></ul>
         </div>
         <div class="overview-col">
-          <h4>Automatisation</h4>
+          <h4 data-i18n="col-automation-h4">Automatisation</h4>
           <ul><li>Power Automate</li><li>Power Apps</li><li>VBA</li><li>Office Scripts</li></ul>
         </div>
         <div class="overview-col">
@@ -661,8 +661,8 @@ body::after {
           <ul><li>Scikit-learn</li><li>ACP / PCA</li><li>K-means</li><li>SciPy</li></ul>
         </div>
         <div class="overview-col">
-          <h4>Analyse Métier</h4>
-          <ul><li>Recueil besoins</li><li>Process mapping</li><li>KPI Design</li><li>GCP · SQL</li></ul>
+          <h4 data-i18n="col-ba-h4">Analyse Métier</h4>
+          <ul><li data-i18n="col-ba-li-1">Recueil besoins</li><li>Process mapping</li><li>KPI Design</li><li>GCP · SQL</li></ul>
         </div>
         <div class="overview-col">
           <h4 data-i18n="col-softskills-h4">Soft Skills</h4>
@@ -695,7 +695,7 @@ body::after {
     <div class="project-card reveal reveal-delay-3">
       <div class="project-header">
         <span class="project-name">OPAGE</span>
-        <span class="project-long">Outil de Pilotage des dommAGEs</span>
+        <span class="project-long" data-i18n="project-long-name">Outil de Pilotage des dommAGEs</span>
       </div>
       <div class="project-stack">
         <span class="tag">Power Apps</span>
@@ -1136,7 +1136,7 @@ body::after {
 
     <div class="formation-grid reveal reveal-delay-3">
       <div class="formation-card">
-        <div class="timeline-date">09/2024 – Présent</div>
+        <div class="timeline-date" data-i18n="edu-1-date">09/2024 – Présent</div>
         <h3 data-i18n="edu-1-title">Data Analyst — Titre RNCP Niveau 6</h3>
         <div class="sub">OpenClassrooms / CFA Orange</div>
         <p data-i18n="edu-1-desc">Formation en alternance ancrée dans le concret : chaque compétence acquise est immédiatement testée, challengée et appliquée sur de vrais projets métier au sein d'Orange.</p>
@@ -1191,6 +1191,20 @@ body::after {
 
 <script>
 // ─── TRANSLATIONS ───
+/* GLOSSARY — keep vocabulary consistent across all EN keys
+   alternance             → work-study program
+   RNCP Niveau 6          → Bachelor's-level Qualification (RNCP Level 6 / EQF 6)
+   tiers / tiers responsables → third parties
+   lettre de commande     → purchase order
+   infocentre SI          → SI data warehouse
+   pompier volontaire     → volunteer firefighter
+   sapeur-pompier pro     → professional firefighter
+   auxiliaire de vacances → seasonal employee
+   formation (académique) → qualification / academic training  (NOT "training")
+   projet de formation    → academic project                   (NOT "training project")
+   Présent                → Present
+   il y a X ans           → in [month + year]
+*/
 const translations = {
   fr: {
     'nav-about': 'À propos',
@@ -1218,16 +1232,18 @@ const translations = {
     'skill-cat-4-title': 'Analyse Métier & Gestion de Projet',
     'skill-cat-4-p': 'Analyser les processus métier, recueillir les besoins fonctionnels, rédiger les spécifications et piloter le projet de A à Z : cadrage, architecture, déploiement, formation des utilisateurs. OPAGE, classé 1er nationalement, illustre ma capacité à transformer un besoin métier en solution à fort impact mesurable.',
     'skills-overview-h3': 'En un coup d\'œil',
-    'col-methods-h4': 'Méthodologies',
-    'method-li-1': 'Gestion de projet',
-    'method-li-3': 'Automatisation',
     'col-langs-h4': 'Langues',
     'lang-native': 'Français — Natif',
     'lang-fluent': 'Anglais — Courant',
+    'col-automation-h4': 'Automatisation',
+    'col-ba-h4': 'Analyse Métier',
+    'col-ba-li-1': 'Recueil besoins',
     'col-softskills-h4': 'Soft Skills',
     'soft-li-1': 'Autonomie',
     'soft-li-2': 'Adaptabilité',
     'soft-li-4': 'Gestion du stress',
+    'project-long-name': 'Outil de Pilotage des dommAGEs',
+    'edu-1-date': '09/2024 – Présent',
     'project-label': '03 — Projet phare',
     'project-context-title': 'Le contexte',
     'project-context-text': 'Chaque année, des milliers de dommages sont causés sur le réseau Orange par des tiers : travaux de chantier, accidents de la route... Avant OPAGE, les enquêtes étaient gérées manuellement, sans outil structuré, ce qui rendait difficile l\'identification des responsables et le suivi de la performance.',
@@ -1355,30 +1371,32 @@ const translations = {
     'hero-avail': 'Available immediately',
     'about-label': '01 — About',
     'about-title': 'My Background',
-    'about-p1': 'I\'m driven by data and by what it can do to make people\'s lives easier — I joined Orange as a Data Analyst two years ago. I like owning projects end to end, analyzing business processes, gathering functional requirements, and building tools that have a real impact — turning complex needs into solutions that are simple and effective.',
+    'about-p1': 'I\'m driven by data and by what it can do to make people\'s lives easier — I joined Orange as a Data Analyst in September 2024. I like owning projects end to end, analyzing business processes, gathering functional requirements, and building tools that have a real impact — turning complex needs into solutions that are simple and effective.',
     'about-p2': 'Before that, I worked as a professional firefighter and spent a year in Australia. Very different experiences, but they taught me what matters most: adapting fast, staying level-headed under pressure, working well as part of a team, and always putting people first in whatever I do.',
     'about-p3': 'Those experiences shaped how I approach data projects today: with pragmatism, curiosity, and a genuine drive to build things that actually matter. What motivates me now is keeping that momentum going — building useful solutions, growing my skills, and taking on new challenges.',
     'skills-label': '02 — Skills',
     'skills-title': 'Expertise',
-    'skill-cat-1-title': 'Data & Visualisation',
+    'skill-cat-1-title': 'Data & Visualization',
     'skill-cat-1-p': 'Power BI, DAX, Python (Pandas, Matplotlib, SciPy), SQL, PostgreSQL — I manage the full data lifecycle, from collection to visualization. Business dashboards, multi-source reports, statistical studies: turning raw data into insights that are clear and actionable.',
     'skill-cat-2-title': 'Automation & Low-Code',
     'skill-cat-2-p': 'Power Automate, Power Apps, Office Scripts (JS), VBA, KNIME — I automate business processes to eliminate repetitive work. The result: full working days saved, more reliable workflows, and tools that teams actually adopt.',
     'skill-cat-3-title': 'Machine Learning & Stats',
-    'skill-cat-3-p': 'Scikit-learn, PCA, K-means, supervised classification, regression — from international market segmentation to counterfeit banknote detection and gender-equality analysis. I take projects all the way from modeling to interpreting the results.',
+    'skill-cat-3-p': 'Scikit-learn, PCA, K-means, supervised classification, regression — from international market segmentation to counterfeit banknote detection and workplace gender-equality analysis. I take projects all the way from modeling to interpreting the results.',
     'skill-cat-4-title': 'Business Analysis & Project Management',
     'skill-cat-4-p': 'Analyzing business processes, gathering functional requirements, writing specifications, and owning projects end to end: scoping, architecture, deployment, user training. OPAGE — ranked #1 nationally and now rolling out company-wide — is the clearest proof of my ability to turn a business need into a solution with real, measurable impact.',
     'skills-overview-h3': 'At a Glance',
-    'col-methods-h4': 'Methods',
-    'method-li-1': 'Project Mgmt',
-    'method-li-3': 'Automation',
+    'col-automation-h4': 'Automation',
+    'col-ba-h4': 'Business Analysis',
+    'col-ba-li-1': 'Requirements',
     'col-langs-h4': 'Languages',
     'lang-native': 'French — Native',
     'lang-fluent': 'English — Fluent',
     'col-softskills-h4': 'Soft Skills',
     'soft-li-1': 'Autonomy',
     'soft-li-2': 'Adaptability',
-    'soft-li-4': 'Stress Mgmt',
+    'soft-li-4': 'Stress Management',
+    'project-long-name': 'Damage Tracking & Investigation Tool',
+    'edu-1-date': 'Sep 2024 – Present',
     'project-label': '03 — Featured Project',
     'project-context-title': 'Context',
     'project-context-text': 'Every year, thousands of incidents damage Orange\'s network — construction work, road accidents, and the like. Before OPAGE, investigations were handled manually with no structured tool, which made it hard to identify who was responsible and to track performance.',
@@ -1394,7 +1412,7 @@ const translations = {
     'project-github-link': 'See my other projects on GitHub',
     'exp-label': '04 — Experience',
     'exp-title': 'Professional Background',
-    'exp-1-date': '09/2024 – Present · Montpellier',
+    'exp-1-date': 'Sep 2024 – Present · Montpellier',
     'exp-1-title': 'Data & Business Analyst',
     'exp-1-desc': 'Joining Orange gave me the opportunity to independently own projects end to end — gathering functional requirements, analyzing business processes, aligning with stakeholders, and delivering to production. Day to day, I build custom business tools, automate processing workflows, and design decision-support dashboards. I also designed and delivered an AI literacy program for 50 employees.',
     'exp-2-date': '2023 · Australia',
@@ -1403,14 +1421,14 @@ const translations = {
     'tag-adaptabilite': 'Adaptability',
     'tag-autonomie': 'Autonomy',
     'tag-anglais-pro': 'Professional English',
-    'exp-3-date': '01/2022 – 12/2022 · Essonne',
+    'exp-3-date': 'Jan – Dec 2022 · Essonne',
     'exp-3-title': 'Professional Firefighter',
     'exp-3-desc': 'High-stakes emergency response in critical environments where every second counts. I learned to manage stress, make fast decisions with incomplete information, and stay focused on what mattered most in complex situations.',
     'tag-gestion-stress': 'Stress Management',
     'tag-travail-equipe': 'Teamwork',
     'tag-decision-rapide': 'Quick Decision-Making',
     'exp-4-date': 'Summers 2018, 2019, 2020 · Paris',
-    'exp-4-title': 'Summer Intern',
+    'exp-4-title': 'Seasonal Employee',
     'exp-4-desc': 'Three consecutive summers at BNP Paribas — my first real exposure to the professional world, where I developed rigor, a strong service mindset, and the ability to adapt in a demanding environment.',
     'tag-rigueur': 'Rigor',
     'tag-sens-service': 'Service Orientation',
@@ -1421,12 +1439,12 @@ const translations = {
     'tag-solidarite': 'Solidarity',
     'tag-engagement-tag': 'Commitment',
     'tag-responsabilites': 'Responsibilities',
-    'exp-6-date': '02/2020 – 12/2024 · Essonne',
+    'exp-6-date': 'Feb 2020 – Dec 2024 · Essonne',
     'exp-6-title': 'Volunteer Firefighter',
     'exp-6-desc': 'Five years of volunteer service alongside my other commitments — driven by values of solidarity, dedication, and service to others.',
     'edu-label': '05 — Education',
     'edu-title': 'Academic Background',
-    'edu-1-title': 'Data Analyst — RNCP Level 6 Certification',
+    'edu-1-title': 'Data Analyst — Bachelor\'s-level Qualification (RNCP Level 6 / EQF 6)',
     'edu-1-desc': 'A work-study program grounded in real practice — every skill I learn is immediately tested and applied to genuine business projects at Orange.',
     'edu-2-title': "Bachelor's in Economics & Management",
     'edu-2-desc': 'Three years studying organizations, markets, and decision-making mechanisms — an economics background that directly fuels my ability to understand business challenges, engage with stakeholders, and design solutions that match real organizational needs.',
@@ -1444,7 +1462,7 @@ const translations = {
     'mini-toggle-more': 'Show more',
     'mini-toggle-less': 'Show less',
     'group-entreprise': 'Enterprise Projects',
-    'group-formation': 'Training Projects',
+    'group-formation': 'Academic Projects',
     'e1-title': 'Purchase Order Tracking',
     'e1-meta': 'Orange · Power BI · BigQuery GCP · Power Automate',
     'e1-desc': 'A multi-source Power BI report combining consumption data from the SI data warehouse, a manual linking file, and BigQuery GCP queries. Duplicate purchase orders made direct aggregation unreliable, so I used the linking file as a reconciliation key. The report tracks budget envelopes in full — current spend, a 3-month rolling average, DAX-based forward projections, and an estimated depletion date — with repetitive manual queries replaced by interactive filters. Data refreshes are fully automated via a Power Automate flow triggered by a daily email.<br><br>Result: 30 minutes saved per use, with near real-time figures where other regions are still working from data up to three months old. National rollout is under discussion.',
@@ -1496,7 +1514,11 @@ const translations = {
   }
 };
 
-let currentLang = localStorage.getItem('lang') || 'fr';
+let currentLang;
+try { currentLang = localStorage.getItem('lang'); } catch (e) {}
+if (!currentLang) {
+  currentLang = (navigator.language || navigator.userLanguage || '').startsWith('fr') ? 'fr' : 'en';
+}
 
 function setLanguage(lang) {
   currentLang = lang;
@@ -1527,7 +1549,7 @@ function setLanguage(lang) {
     toggle.textContent = translations[lang][body.classList.contains('open') ? 'mini-toggle-less' : 'mini-toggle-more'];
   });
 
-  localStorage.setItem('lang', lang);
+  try { localStorage.setItem('lang', lang); } catch (e) {}
 }
 
 function toggleAllProjects() {
